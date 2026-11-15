@@ -1,5 +1,4 @@
 import { origin } from '../data/site.mjs';
-import { sources } from '../data/content.mjs';
 
 export function GET() {
   return new Response(`# Mottle Game
@@ -18,8 +17,7 @@ export function GET() {
 - [About Mottle Game](${origin}/about/): Ownership, editorial method and independent-site disclosure.
 - [关于本站](${origin}/zh/about/): 本站定位、内容方法与非官方说明。
 
-## Original work
-- [8x.gg game listing](${sources.original})
-- [Star Lord](${sources.creator})
+## Attribution
+- Mottle – Hide & Seek was created by Star Lord. Mottle Game is an independent guide and is not the official game site.
 `, { headers: { 'Content-Type': 'text/plain; charset=utf-8' } });
 }

@@ -11,7 +11,6 @@ if (player) {
   const loading = player.querySelector('[data-loading-msg]');
   const timeout = player.querySelector('[data-timeout-msg]');
   const recovery = player.querySelector('[data-recovery]');
-  const originalLink = document.querySelector('#play [data-original]');
   let frame;
   let timer;
   let attempts = 0;
@@ -75,7 +74,7 @@ if (player) {
     expand.setAttribute('aria-pressed', String(active));
     expandText.textContent = active ? player.dataset.exitFullscreenLabel : player.dataset.fullscreenLabel;
     document.body.classList.toggle('has-expanded-player', player.classList.contains('is-expanded'));
-    const outside = [document.querySelector('.site-header'), document.querySelector('.site-footer'), document.querySelector('.reading-surface'), originalLink];
+    const outside = [document.querySelector('.site-header'), document.querySelector('.site-footer'), document.querySelector('.reading-surface')];
     for (const element of outside) {
       if (element) element.inert = player.classList.contains('is-expanded');
     }
@@ -93,7 +92,6 @@ if (player) {
     report('game_retry', { attempt: attempts + 1 });
     loadGame();
   });
-  originalLink?.addEventListener('click', () => report('open_original'));
   expand.addEventListener('click', async () => {
     report('fullscreen_click');
     if (player.classList.contains('is-expanded')) {

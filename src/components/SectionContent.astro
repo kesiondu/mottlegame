@@ -6,6 +6,7 @@ const listItems = (entries) => entries.map((entry) =>
 ---
 {section.intro && <p class="section-answer">{section.intro}</p>}
 {section.paragraphs?.map((paragraph) => <p>{paragraph}</p>)}
+{section.attribution && <p class="source-note">{section.attribution}</p>}
 {section.steps?.length > 0 && <ol class="play-steps">
   {listItems(section.steps).map(({ label, text }) => <li>{label && <strong>{label} </strong>}{text}</li>)}
 </ol>}

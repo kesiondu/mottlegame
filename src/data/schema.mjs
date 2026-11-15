@@ -1,5 +1,5 @@
 import { asset, languages, localized, origin } from './site.mjs';
-import { content, sources } from './content.mjs';
+import { content } from './content.mjs';
 
 const context = 'https://schema.org';
 const website = `${origin}/#website`;
@@ -41,10 +41,10 @@ export function homeSchema(lang) {
         '@id': game,
         name: 'Mottle – Hide & Seek',
         alternateName: ['Mottle Game', '变色龙：躲猫猫'],
-        url: sources.original,
+        url,
         gamePlatform: 'Web browser',
         isAccessibleForFree: true,
-        author: { '@type': 'Person', name: 'Star Lord', url: sources.creator },
+        author: { '@type': 'Person', name: 'Star Lord' },
       },
       {
         '@type': 'FAQPage',
@@ -76,11 +76,10 @@ export function guideSchema(lang, guide) {
     url,
     mainEntityOfPage: url,
     isPartOf: { '@id': website },
-    about: { '@type': 'VideoGame', '@id': game, name: 'Mottle – Hide & Seek', url: sources.original },
+    about: { '@type': 'VideoGame', '@id': game, name: 'Mottle – Hide & Seek', url: new URL(localized(lang), origin).href },
     image: (images.length
       ? images.map((e) => new URL(e.path, origin).href)
       : [shareImage]),
-    citation: sources.original,
     ...(guide.updated ? { dateModified: guide.updated } : {}),
   };
 }

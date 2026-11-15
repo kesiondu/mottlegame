@@ -44,10 +44,9 @@ const palette = lang === 'zh'
           <p data-timeout-msg hidden>{t.timeout}</p>
           <div class="recovery-controls" data-recovery hidden>
             <button type="button" class="play-button recovery-button" data-retry>{t.retry}</button>
-            <a href={sources.original} target="_blank" rel="noopener noreferrer">{t.original} <Icon name="external" size={14} /></a>
           </div>
         </div>
-        <noscript><a class="play-button" href={sources.original}>{t.original} <Icon name="external" size={20} /></a></noscript>
+        <noscript><p class="source-note">{lang === 'zh' ? '请启用 JavaScript 以加载游戏。' : 'Enable JavaScript to load the game.'}</p></noscript>
       </div>
       <div class="game-tools">
         <button type="button" data-restart hidden disabled><Icon name="restart" /> {t.restart}</button>
@@ -64,10 +63,7 @@ const palette = lang === 'zh'
       <span class="atlas-ruler" aria-hidden="true"></span>
       <div class="ink-samples" aria-hidden="true">{palette.map((_, index) => <i class={`sample-${index}`}></i>)}</div>
     </div>
-    <p class="connection-note">{t.frameNote}</p>
-    <a class="original-game-link" href={sources.original} data-original target="_blank" rel="noopener noreferrer">
-      {t.original}
-    </a>
+    <p class="connection-note source-note">{t.frameNote}</p>
   </div>
 </section>
 <script is:inline src="/player.js" defer></script>

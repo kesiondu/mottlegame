@@ -343,19 +343,6 @@ p { margin: 0 0 1.15em; }
   font-size: .89rem;
   line-height: 1.33;
 }
-.original-game-link {
-  position: absolute;
-  inset-inline-end: 0;
-  inset-block-end: .35rem;
-  display: inline-flex;
-  align-items: center;
-  min-height: 24px;
-  color: #d9e7d9;
-  font-size: .8rem;
-  line-height: 1.25;
-  text-decoration: none;
-}
-.original-game-link:is(:hover, :focus-visible) { text-decoration: underline; }
 .has-expanded-player { overflow: hidden; }
 .has-expanded-player .play-stage { z-index: 3; }
 .player:fullscreen, .player.is-expanded {
@@ -485,7 +472,13 @@ strong { font-weight: 600; }
   border-radius: .35rem;
 }
 .guide-link:hover { background: #d4e8cd; }
-.source-links { margin: .85rem 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: .55rem 1.15rem; font-size: 1rem; }
+.source-links { margin: .85rem 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: .55rem 1.15rem; font-size: .88rem; color: var(--muted); }
+.source-note {
+  margin-block: .45rem;
+  color: var(--muted);
+  font-size: .78rem;
+  line-height: 1.4;
+}
 .faq { border-top: 1px solid var(--rule); }
 .faq details { border-bottom: 1px solid var(--rule); }
 .faq summary {
@@ -513,6 +506,7 @@ strong { font-weight: 600; }
 .site-footer-inner { display: flex; justify-content: space-between; gap: 1.25rem 3rem; flex-wrap: wrap; }
 .footer-brand { margin-bottom: .9rem; }
 .site-footer p { margin: .12rem 0; max-width: 53ch; color: #e0e7d7; font-size: 1rem; }
+.site-footer .source-note { color: #aebbac; font-size: .76rem; }
 .site-footer a { color: inherit; }
 .site-footer a:hover { color: var(--sun); }
 .footer-nav { display: flex; flex-wrap: wrap; align-content: start; gap: 0 1.45rem; }

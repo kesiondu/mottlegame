@@ -1,8 +1,6 @@
 import { guide } from './guide.mjs';
 
 export const sources = {
-  original: 'https://www.8x.gg/apps/xPKXL5uurAzb6pAG',
-  creator: 'https://www.8x.gg/creator/fIfBKUNfnbAZukk-',
   gameUrl: 'https://5qbwd96hq.clide.app/',
   dictionary: 'https://www.ahdictionary.com/word/search.html?q=mottle',
   motelDictionary: 'https://www.ahdictionary.com/word/search.html?q=motel',
@@ -20,15 +18,12 @@ export const content = {
       {
         id: 'what-is-mottle-game',
         title: 'What Is Mottle Game',
-        intro: 'Mottle — Hide & Seek is a real-time browser game by Star Lord, published on 8x.gg. You guide a small chameleon across a floor of shifting color patches. Collect the glowing Fireflies, then stop moving so your body can take on the color of the ground beneath you.',
+        intro: 'Mottle — Hide & Seek is a real-time browser game by Star Lord. You guide a small chameleon across a floor of shifting color patches. Collect the glowing Fireflies, then stop moving so your body can take on the color of the ground beneath you.',
         paragraphs: [
           'The top of the game screen tracks your score, lives and round. The Camo and Alert bars tell you what is happening between those numbers. Camo shows your blend with the ground. Alert tells you when exposure is becoming dangerous. You can learn the first round by watching those two bars while the Seekers sweep past.',
           'The player above loads the original game from a third-party host.',
         ],
-        links: [
-          { label: 'Original game on 8x.gg', href: sources.original },
-          { label: 'Star Lord on 8x.gg', href: sources.creator },
-        ],
+        attribution: 'Original release: Star Lord on 8x.gg. Mottle Game is an independent guide and is not affiliated with the creator or publishing platform.',
       },
       {
         id: 'mottle-meaning',
@@ -36,7 +31,7 @@ export const content = {
         intro: 'To mottle something is to mark its surface with irregular spots, streaks or patches of color. A mottled surface can have several shades of one color or distinct colors side by side. As a noun, a mottle can be a patch of color or the uneven pattern those patches form.',
         paragraphs: [
           'Picture a pear with brown flecks on its yellow skin, or a piece of stone with dark patches running through pale gray. You might call either surface mottled. The patches can be tiny or broad, and their edges often look uneven. The word describes how the colors sit together on a surface.',
-          'In Mottle — Hide & Seek, the name fits the playfield and the way you hide on it. The floor gives you patches of different colors. While you move, the chameleon stands out. Once you let go, its body takes on the color under its feet. From a player’s point of view, the title captures the moment a moving figure becomes harder to pick out against a patchy floor. That reading comes from the game mechanic. The creator’s listing describes the color matching without explaining the choice of name.',
+          'In Mottle — Hide & Seek, the name fits the playfield and the way you hide on it. The floor gives you patches of different colors. While you move, the chameleon stands out. Once you let go, its body takes on the color under its feet. From a player’s point of view, the title captures the moment a moving figure becomes harder to pick out against a patchy floor.',
           'Motel is a separate word. It means a place for motorists to stay, often with parking near the guest rooms. The game title is spelled M-o-t-t-l-e, with two t’s and a final l-e. Motel has one t and ends in e-l.',
         ],
         links: [
@@ -61,7 +56,7 @@ export const content = {
           { label: 'Watch the beam sweep.', text: 'Follow the direction of the nearest cone, especially where it cuts across your intended path.' },
           { label: 'Drag through the Firefly.', text: 'Guide your character through the glow to collect it. Check the Score display after contact.' },
           { label: 'Release on the next patch.', text: 'Let go, watch Camo climb, and use Alert to decide how urgently you need to move.' },
-          { label: 'Read the next round.', text: 'Use each new Hide countdown to choose a fresh route. The original listing describes later rounds as faster.' },
+          { label: 'Read the next round.', text: 'Use each new Hide countdown to choose a fresh route as later rounds get faster.' },
         ],
       },
       {
@@ -118,26 +113,25 @@ export const content = {
       {
         id: 'download-unblocked',
         title: 'Download & Unblocked',
-        intro: 'Mottle — Hide & Seek is available as a free browser game. Open the player above or visit the original 8x.gg listing. The game runs in the browser, and this site supplies no standalone installer, APK or offline edition.',
+        intro: 'Mottle — Hide & Seek is available as a free browser game. Open the player above to play. This site supplies no standalone installer, APK or offline edition.',
         paragraphs: [
-          'If the embedded view stalls, give the original listing a try. Access on a school, workplace or other managed network depends on the rules set by its administrator. Ask them about access if the host is restricted. On a phone, use the original web player if the game area here is too small for a comfortable drag.',
+          'If the embedded view stalls, reload the player. Access on a school, workplace or other managed network depends on the rules set by its administrator. Ask them about access if the host is restricted.',
         ],
-        links: [{ label: 'Open the original game listing', href: sources.original }],
       },
       {
         id: 'faq',
         title: 'FAQ',
         items: [
-          { question: 'Is Mottle Game free to play?', answer: 'Yes. The creator’s 8x.gg listing marks Mottle — Hide & Seek as free. You can play from the browser.' },
-          { question: 'Who made Mottle — Hide & Seek?', answer: 'Star Lord created the game. The primary source for the game and its creator credit is the original 8x.gg listing.' },
-          { question: 'Is mottlegame.cc the official site?', answer: 'Mottlegame.cc is an independent player guide. Star Lord’s original game is published on 8x.gg.' },
+          { question: 'Is Mottle Game free to play?', answer: 'Yes. Mottle — Hide & Seek is free to play in the browser.' },
+          { question: 'Who made Mottle — Hide & Seek?', answer: 'Star Lord created the game.' },
+          { question: 'Is mottlegame.cc the official site?', answer: 'No. Mottlegame.cc is an independent player guide.' },
           { question: 'Can I play Mottle on a phone?', answer: 'The browser game uses a drag gesture. Start in the browser, drag with one finger and lift it to stop and blend.' },
           { question: 'How do I camouflage in Mottle?', answer: 'Release your drag and stay still. The chameleon starts matching the ground beneath it, and the Camo meter shows the change.' },
           { question: 'What do Fireflies do?', answer: 'Fireflies award points on contact. A single Firefly raised Score from 0 to 10 in our Round 1 test.' },
           { question: 'What happens when Alert fills?', answer: 'Full Alert triggers a catch and costs a life. If you have lives left, the same round restarts. The last catch opens the Caught Out results screen.' },
           { question: 'What is the difference between mottle and motel?', answer: 'Mottle describes marking a surface with uneven color. A motel is a place for motorists to stay.' },
           { question: 'Is there a Mottle Game APK?', answer: 'This site distributes no APK. The route verified for this guide is the original game in a web browser.' },
-          { question: 'What if Mottle will not load here?', answer: 'Try reloading the player or open the original 8x.gg listing. Access depends on the game host and your network’s rules.' },
+          { question: 'What if Mottle will not load here?', answer: 'Try reloading the player. Access depends on the game host and your network’s rules.' },
         ],
       },
     ],
@@ -147,7 +141,7 @@ export const content = {
     title: '变色龙：躲猫猫（Mottle Game）｜在线玩、操作与高分攻略',
     description: '在线玩《变色龙：躲猫猫》Mottle — Hide & Seek。拖动捡萤火虫，松手融入地面，躲开搜寻者的灯光。查看中文操作、警戒值说明和图文高分攻略。',
     h1: '变色龙：躲猫猫',
-    definition: '《变色龙：躲猫猫》（Mottle — Hide & Seek）是 Star Lord 发布在 8x.gg 的免费网页游戏。拖动变色龙去捡萤火虫，松手就能停住，逐渐融入脚下的色块。搜寻者的光束扫过来时，留意伪装条 Camo 和警戒条 Alert。',
+    definition: '《变色龙：躲猫猫》（Mottle — Hide & Seek）是 Star Lord 创作的免费网页游戏。拖动变色龙去捡萤火虫，松手就能停住，逐渐融入脚下的色块。搜寻者的光束扫过来时，留意伪装条 Camo 和警戒条 Alert。',
     guide: guide.zh,
     sections: [
       {
@@ -158,17 +152,14 @@ export const content = {
           '屏幕上方的 Score、Lives 和 Round 分别显示分数、剩余生命和轮次。刚上手时，可以先盯住伪装和警戒两条进度条。找一块地停下来，看看身体颜色怎么变，再观察灯光扫到近处时警戒条的反应。',
           '上方播放器载入第三方托管的原版游戏。本指南由 mottlegame.cc 独立制作，原作归 Star Lord。',
         ],
-        links: [
-          { label: '8x.gg 原版游戏页面', href: sources.original },
-          { label: 'Star Lord 的 8x.gg 主页', href: sources.creator },
-        ],
+        attribution: '原作由 Star Lord 发布于 8x.gg。本站为独立玩家指南，与原作者及发布平台无隶属关系。',
       },
       {
         id: 'mottle-meaning',
         title: 'Mottle 是什么意思？',
         intro: '英语动词 mottle 指“使表面呈斑驳色”，比如让浅色石面出现大小不一的深色斑块。mottle 也可以作名词，指其中一块斑色或整片斑驳花纹。描述外观时常见的是 mottled，例如 mottled skin 就是“有斑驳花纹的皮肤”。',
         paragraphs: [
-          '游戏场地本身是色块拼成的。拖动时，变色龙亮得容易辨认。松手后，它的身体颜色会朝脚下那块地的颜色靠拢。斑驳的地面给角色提供了藏身之处，这就是从游戏机制看，Mottle 这个标题贴切的地方。原作品页说明了变色规则，未解释作者为什么选这个名字。',
+          '游戏场地本身是色块拼成的。拖动时，变色龙亮得容易辨认。松手后，它的身体颜色会朝脚下那块地的颜色靠拢。斑驳的地面给角色提供了藏身之处，这就是从游戏机制看，Mottle 这个标题贴切的地方。',
           'Motel 是另一个词，意思是“汽车旅馆”。记字母顺序就容易区分：mottle 有两个 t，结尾是 l-e。motel 只有一个 t，结尾是 e-l。本站用《变色龙：躲猫猫》指代 Star Lord 的 Mottle — Hide & Seek。',
         ],
         links: [
@@ -191,7 +182,7 @@ export const content = {
           { label: '看灯扫过来还是扫过去。', text: '重点留意光束什么时候划过你的路线。' },
           { label: '拖着变色龙穿过亮点。', text: '碰到萤火虫后，看一眼分数，确认捡到了。' },
           { label: '到地方就放手。', text: '等伪装条上升，同时用 Alert 判断还有多少暴露余量。' },
-          { label: '换一轮就重新选路线。', text: '利用新的 Hide 倒计时看好位置。原版介绍称后续轮次的节奏会加快。' },
+          { label: '换一轮就重新选路线。', text: '利用新的 Hide 倒计时看好位置，后续轮次会逐渐加快。' },
         ],
       },
       {
@@ -233,24 +224,23 @@ export const content = {
       {
         id: 'download-unblocked',
         title: '下载与访问',
-        intro: '《变色龙：躲猫猫》可以在浏览器里免费打开。在本页点“开始游戏”，或者到原版 8x.gg 页面玩。本站不提供单独的 APK、安装包或离线版。',
-        paragraphs: ['如果嵌入窗口卡住，可以试试原版入口。在学校或工作场所，能否连接游戏服务器取决于网络管理规则。有访问限制时，请联系管理员。手机拖动不方便时，可以在原版窗口里试一次。'],
-        links: [{ label: '打开原版游戏页面', href: sources.original }],
+        intro: '《变色龙：躲猫猫》可以在浏览器里免费打开。在本页点“开始游戏”即可。本站不提供单独的 APK、安装包或离线版。',
+        paragraphs: ['如果嵌入窗口卡住，可以重新加载播放器。在学校或工作场所，能否连接游戏服务器取决于网络管理规则。有访问限制时，请联系管理员。'],
       },
       {
         id: 'faq',
         title: '常见问题',
         items: [
-          { question: '《变色龙：躲猫猫》免费吗？', answer: '免费。8x.gg 原版页面将这款游戏标为免费，可以用浏览器玩。' },
-          { question: 'Mottle — Hide & Seek 是谁做的？', answer: '原作者是 Star Lord，作品发布在 8x.gg。' },
-          { question: 'mottlegame.cc 是官网吗？', answer: 'mottlegame.cc 是独立玩家指南。原版由 Star Lord 发布在 8x.gg。' },
+          { question: '《变色龙：躲猫猫》免费吗？', answer: '免费，可以直接用浏览器玩。' },
+          { question: 'Mottle — Hide & Seek 是谁做的？', answer: '原作者是 Star Lord。' },
+          { question: 'mottlegame.cc 是官网吗？', answer: '不是。mottlegame.cc 是独立玩家指南。' },
           { question: '手机可以玩吗？', answer: '网页游戏支持拖动操作。用一根手指带动角色，抬起手指后停住并开始伪装。' },
           { question: '变色龙怎么伪装？', answer: '松开手指或鼠标，角色会停下并向脚下的颜色过渡。Camo 条会显示进度。' },
           { question: '捡到萤火虫有什么用？', answer: '拾取萤火虫可以得分。第一轮单独捡一只的测试中，Score 从 0 增加到 10。' },
           { question: '警戒条满了会怎样？', answer: 'Alert 到 100% 会被抓并扣一条命。还有命时重试同一轮，最后一条命用完后进入 Caught Out 结算。' },
           { question: 'mottle 跟 motel 有什么区别？', answer: 'mottle 指使表面呈斑驳色或斑驳花纹，motel 的意思是汽车旅馆。' },
           { question: '有《变色龙：躲猫猫》安卓版 APK 吗？', answer: '本站没有发布 APK。当前确认的原版入口是浏览器游戏。' },
-          { question: '游戏在这个页面打不开怎么办？', answer: '可以重试播放器，或打开 8x.gg 原版页面。能否连通还取决于游戏服务器和你所在的网络。' },
+          { question: '游戏在这个页面打不开怎么办？', answer: '可以重试播放器。能否连通还取决于游戏服务器和你所在的网络。' },
         ],
       },
     ],

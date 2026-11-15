@@ -49,11 +49,10 @@ export const guide = {
           'We tested Star Lord’s original game on November 15, 2026 in desktop Chromium with a mouse. We ran separate movement and survival attempts and recorded the visible scores, hearts, round labels and meters. The screenshots are from the game, with file sizes reduced for the guide.',
           'For our baseline run, we let the chameleon stand still. The first Hide screen showed three lives, Score 0, Camo 100% and Alert 0%. The game advanced to Round 2 with all three hearts and Score 100, without an intentional Firefly pickup. By the Round 4 opening, the score was 600 and all three hearts remained. Surviving those rounds earned points in this run.',
           'In a separate exposure test, moving during Seek brought Camo to 0%. We saw Alert about halfway up the bar, then at 100% with “SPOTTED — hide!” The catch removed a heart. The game restarted the Hide phase in the same round, with Alert 0% and Camo 100%. The first active Seek countdown showed 13 seconds on one captured frame.',
-          'Later-round pressure was visible on screen. The captured Round 1 start shows one visible Seeker, and the Round 4 start shows three. The board colors and Firefly placement also changed. The original listing describes faster rounds. The game shows a red warning and an exclamation mark during detection. These signals help you react, while patrol timing and target selection would take separate tests to establish.',
+          'Later-round pressure was visible on screen. The captured Round 1 start shows one visible Seeker, and the Round 4 start shows three. The board colors and Firefly placement also changed as the rounds grew faster. The game shows a red warning and an exclamation mark during detection. These signals help you react, while patrol timing and target selection would take separate tests to establish.',
           'A separate Round 1 test isolated one Firefly before the end-of-round bonus. The score changed from 0 to 10 on a short drag through the glow. After release, the character started to blend. In two stationary samples about 1.3 seconds apart, Camo climbed from 60% to 100% and Alert fell from 38% to 9%. Those values describe this route under the moving beams. They are insufficient to establish a fixed recovery rate.',
           'Use the on-screen Pause control if you want to stop the clock. Pressing Esc left the countdown running in our desktop test. The button opened a menu with Resume and Quit, and the visible timer stayed at 9 seconds during the pause sample.',
         ],
-        links: [{ label: 'Creator’s original game listing', href: 'https://www.8x.gg/apps/xPKXL5uurAzb6pAG' }],
         figures: [
           { path: asset('/images/mottle-game-round-1-survival-score-100.webp'), alt: 'Round 2 Hide screen with Score 100 and all three lives', caption: 'Surviving Round 1 raised Score to 100 in the stationary run. The player kept all three hearts.' },
           { path: asset('/images/mottle-game-round-4-three-seekers-score-600.webp'), alt: 'Round 4 Hide screen showing three Seekers, three hearts and Score 600', caption: 'At the start of Round 4 in the same run, there were three Seekers on screen and Score was 600.' },
@@ -160,7 +159,6 @@ export const guide = {
           '第一轮另做了单次萤火虫拾取，赶在过轮给分前对照。短拖经过一个亮点，Score 从 0 涨到 10。松手后隔约 1.3 秒取样，Camo 从 60% 升到 100%，Alert 从 38% 降到 9%。这组读数只对应当时的走位和灯光，还不足以算出固定恢复速度。',
           '临时离开时，请点游戏内的暂停键。桌面实测按 Esc 后计时仍在走。点暂停才打开带 Resume 和 Quit 的菜单，取样期间屏幕时钟保持在 9 秒。',
         ],
-        links: [{ label: '作者的原版作品页面', href: 'https://www.8x.gg/apps/xPKXL5uurAzb6pAG' }],
         figures: [
           { path: asset('/images/mottle-game-round-1-survival-score-100.webp'), alt: '第二轮 Hide 画面显示 100 分，三条命都在', caption: '静止测试撑过第一轮后得到 100 分，三颗爱心都在。' },
           { path: asset('/images/mottle-game-round-4-three-seekers-score-600.webp'), alt: '第四轮开局有三个搜寻者、三颗爱心，分数为 600', caption: '同一局走到第四轮开局时，画面里有三个搜寻者，累计 600 分。' },
@@ -177,7 +175,7 @@ export const guide = {
         paragraphs: [
           '以下是我们对机制的解读。游戏用萤火虫把你引到藏身点之外，又让移动中的变色龙变得显眼。松开同一个操作就能停住、开始变色。于是每一次拖动，都要同时考虑前面的分和身后的光。',
           '角色颜色、灯光和警戒条分别解决不同的问题。颜色告诉你角色融进地面没有。扇形光给出搜寻者此刻的朝向。Alert 把暴露的后果显示成一条进度，让你还有机会在掉命前发现情况不对。',
-          '开局倒计时不用加新的操作键，就能给玩家留出看场地的时间。按原版介绍，后续轮次节奏会紧起来。早先能一次跑完的距离，后面可能需要切成两段。',
+          '开局倒计时不用加新的操作键，就能给玩家留出看场地的时间。后续轮次节奏会紧起来，早先能一次跑完的距离，后面可能需要切成两段。',
         ],
       },
       {

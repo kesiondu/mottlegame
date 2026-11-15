@@ -4,7 +4,6 @@ import '@fontsource/source-sans-3/latin-400.css';
 import '@fontsource/source-sans-3/latin-600.css';
 import '../styles/site.css';
 import { asset, assetOrigin, languages, localized, origin, ui } from '../data/site.mjs';
-import { sources } from '../data/content.mjs';
 
 const { lang = 'en', page = '', title, description, schema, noindex = false, home = false } = Astro.props;
 const t = ui[lang];
@@ -89,7 +88,7 @@ const nav = [
         <div>
           <a class="brand footer-brand" href={homeUrl}>{t.brand}</a>
           <p>{t.footer}</p>
-          <p>{t.independent} · <a href={sources.original} rel="noopener noreferrer">{t.original}</a></p>
+          <p class="source-note">{t.independent} · {t.creatorCredit}</p>
         </div>
         <nav aria-label={lang === 'zh' ? '页脚链接' : 'Footer'} class="footer-nav">
           <a href={localized(lang, 'play-guide')}>{t.guide}</a>
