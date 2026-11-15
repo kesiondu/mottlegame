@@ -46,9 +46,13 @@ function verifyGoogleTag(html, route, scriptPolicy) {
 
 const sitemap = await getFile('sitemap.xml');
 const sitemapUrls = [...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map((match) => match[1]);
+const sitemapImages = [...sitemap.matchAll(/<image:loc>(.*?)<\/image:loc>/g)].map((match) => match[1]);
 const expectedUrls = pages.flatMap((page) => [origin + '/' + page, origin + '/zh/' + page]);
 assert.deepEqual(new Set(sitemapUrls), new Set(expectedUrls), 'Sitemap paths');
 assert.equal(sitemapUrls.length, expectedUrls.length);
+assert.match(sitemap, /xmlns:image="http:\/\/www\.google\.com\/schemas\/sitemap-image\/1\.1"/, 'Image sitemap namespace');
+assert.equal(new Set(sitemapImages).size, 24, 'All 24 unique R2 images should appear in the sitemap');
+assert(sitemapImages.every((url) => url.startsWith(`${assetOrigin}/images/mottle-game-`)), 'Image sitemap URLs should use SEO filenames on the R2 domain');
 assert.match(await getFile('robots.txt'), /^Sitemap: https:\/\/mottlegame\.cc\/sitemap\.xml\s*$/m);
 assert.match(await getFile('llms.txt'), /play-guide\//);
 const scriptPolicy = (await getFile('_headers')).match(/\bscript-src\s+([^;]+)/)?.[1] ?? '';

@@ -37,7 +37,7 @@ gh repo create kesiondu/mottlegame --public --source=. --remote=origin --push \
 | `/play-guide/` 与 `/zh/play-guide/` | 返回 200，双语攻略、截图图注、实测和推测可阅读 |
 | 隐私、条款和联系 | 两种语言从各自页脚打开，正文内容与实际站点功能一致 |
 | `hreflang` | 英文页与中文页双向引用，`x-default` 指向英文对应页 |
-| canonical、robots、sitemap | 使用正式生产域，站点地图只包含规范、可索引的 200 页面 |
+| canonical、robots、sitemap | 使用正式生产域；站点地图只包含规范、可索引的 200 页面，并通过图片扩展列出 24 个 R2 图片资源 |
 | `llms.txt` | 描述玩家可见页面与原始来源，数值与教程一致 |
 | `/does-not-exist` | 返回 404，并有返回首页的链接 |
 | 播放器 | 点击 Play 前页面没有游戏 iframe，点击后可进入原作，失败时保留重试和原站链接 |
@@ -45,4 +45,4 @@ gh repo create kesiondu/mottlegame --public --source=. --remote=origin --push \
 | R2 图片 | 图片从 `assets.mottlegame.cc/images/` 返回 200，文件名为描述性的 `mottle-game-*`，类型与缓存头正确 |
 | 社交预览 | 标题、描述、图片和分享链接指向生产页 |
 
-在 Google Search Console 完成域名验证后提交 `https://mottlegame.cc/sitemap.xml`，再用 URL 检查工具查看两个首页和两个攻略页。记录提交日期和索引状态，随后跟踪表现。[Google Sitemap 文档](https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap) · [Google 本地化页面规则](https://developers.google.com/search/docs/specialty/international/localized-versions)
+在 Google Search Console 使用 DNS 完成 `mottlegame.cc` Domain Property 验证，确保验证范围覆盖图片子域 `assets.mottlegame.cc`，然后提交 `https://mottlegame.cc/sitemap.xml`。再用 URL 检查工具查看两个首页和两个攻略页。记录提交日期和索引状态，随后跟踪表现。[Google Sitemap 文档](https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap) · [Google 图片 Sitemap 文档](https://developers.google.com/search/docs/crawling-indexing/sitemaps/image-sitemaps) · [Google 本地化页面规则](https://developers.google.com/search/docs/specialty/international/localized-versions)
