@@ -54,6 +54,11 @@ assert.match(sitemap, /xmlns:image="http:\/\/www\.google\.com\/schemas\/sitemap-
 assert.equal(new Set(sitemapImages).size, 24, 'All 24 unique R2 images should appear in the sitemap');
 assert(sitemapImages.every((url) => url.startsWith(`${assetOrigin}/images/mottle-game-`)), 'Image sitemap URLs should use SEO filenames on the R2 domain');
 assert.match(await getFile('robots.txt'), /^Sitemap: https:\/\/mottlegame\.cc\/sitemap\.xml\s*$/m);
+assert.equal(
+  (await getFile('c653865ec2165f59c5939e42cda4649c.txt')).trim(),
+  'c653865ec2165f59c5939e42cda4649c',
+  'IndexNow key file',
+);
 assert.match(await getFile('llms.txt'), /play-guide\//);
 const scriptPolicy = (await getFile('_headers')).match(/\bscript-src\s+([^;]+)/)?.[1] ?? '';
 const notFound = await getFile('404.html');
