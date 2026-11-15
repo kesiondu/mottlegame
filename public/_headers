@@ -1,5 +1,5 @@
 /*
-  Content-Security-Policy: default-src 'self'; img-src 'self' https://assets.mottlegame.cc; frame-src https://5qbwd96hq.clide.app; object-src 'none'; base-uri 'none'; form-action 'self'; frame-ancestors 'self'; upgrade-insecure-requests
+  Content-Security-Policy: default-src 'self'; script-src 'self' https://www.googletagmanager.com 'sha256-wuQWQDp5En4SbJWjwRDLL/4tMya/pgiuFuhzFZtAwC8='; connect-src 'self' https://www.googletagmanager.com https://*.google-analytics.com https://www.google.com; img-src 'self' https://assets.mottlegame.cc https://www.googletagmanager.com https://*.google-analytics.com; frame-src https://5qbwd96hq.clide.app; object-src 'none'; base-uri 'none'; form-action 'self'; frame-ancestors 'self'; upgrade-insecure-requests
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=()

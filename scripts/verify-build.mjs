@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import { createHash } from 'node:crypto';
 import { access, readFile } from 'node:fs/promises';
 
 const root = new URL('../dist/', import.meta.url);
@@ -33,6 +34,16 @@ function schema(html) {
   return JSON.parse(match[1]);
 }
 
+function verifyGoogleTag(html, route, scriptPolicy) {
+  const tags = [...html.matchAll(/<script data-gtm-bootstrap[^>]*>([\s\S]*?)<\/script>/g)];
+  assert.equal(tags.length, 1, `${route} should have one GTM bootstrap`);
+  assert.equal(html.split('GTM-WWBBCJQM').length - 1, 1, `${route} should load one GTM container`);
+  const js = tags[0][1].replace(/\r\n?/g, '\n');
+  const hash = createHash('sha256').update(js).digest('base64');
+  assert(scriptPolicy.includes(`'sha256-${hash}'`), `${route} GTM bootstrap hash must match the CSP`);
+  assert(scriptPolicy.includes('https://www.googletagmanager.com'), `${route} GTM host must be allowed`);
+}
+
 const sitemap = await getFile('sitemap.xml');
 const sitemapUrls = [...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map((match) => match[1]);
 const expectedUrls = pages.flatMap((page) => [origin + '/' + page, origin + '/zh/' + page]);
@@ -40,12 +51,16 @@ assert.deepEqual(new Set(sitemapUrls), new Set(expectedUrls), 'Sitemap paths');
 assert.equal(sitemapUrls.length, expectedUrls.length);
 assert.match(await getFile('robots.txt'), /^Sitemap: https:\/\/mottlegame\.cc\/sitemap\.xml\s*$/m);
 assert.match(await getFile('llms.txt'), /play-guide\//);
-assert.match(await getFile('404.html'), /noindex/);
+const scriptPolicy = (await getFile('_headers')).match(/\bscript-src\s+([^;]+)/)?.[1] ?? '';
+const notFound = await getFile('404.html');
+assert.match(notFound, /noindex/);
+verifyGoogleTag(notFound, '/404.html', scriptPolicy);
 
 for (const [prefix, lang] of [['', 'en'], ['zh/', 'zh-Hans']]) {
   for (const page of pages) {
     const route = '/' + prefix + page;
     const html = await getFile(prefix + page + 'index.html');
+    verifyGoogleTag(html, route, scriptPolicy);
     const pageTitle = plain(html.match(/<title>(.*?)<\/title>/)?.[1] ?? '');
     builtTitles.push(pageTitle);
     assert(html.includes(`<html lang="${lang}"`), `${route} html lang`);

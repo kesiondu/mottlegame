@@ -23,11 +23,23 @@ const nav = [
 <!doctype html>
 <html lang={languages[lang]} data-locale={lang}>
   <head>
-    <script is:inline async src="https://www.googletagmanager.com/gtm.js?id=GTM-WWBBCJQM"></script>
-    <script is:inline>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+    <script is:inline data-gtm-bootstrap>
+      (() => {
+        const dataLayer = window.dataLayer = window.dataLayer || [];
+        function gtag() {
+          dataLayer.push(arguments);
+        }
+        gtag('consent', 'default', {
+          ad_storage: 'denied',
+          ad_user_data: 'denied',
+          ad_personalization: 'denied',
+        });
+        dataLayer.push({ 'gtm.start': Date.now(), event: 'gtm.js' });
+        const container = document.createElement('script');
+        container.async = true;
+        container.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-WWBBCJQM';
+        document.head.appendChild(container);
+      })();
     </script>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />

@@ -92,6 +92,7 @@ export const policies = {
       description: 'How Mottle Game handles visits and the embedded game.',
       paragraphs: [
         'This independent guide provides public pages without a sign-in form. The deployed website uses Cloudflare to serve pages, process web requests and protect the service.',
+        'The guide uses Google Analytics to understand page visits and use of the guide. Google may use analytics cookies to measure visits. This site sets advertising consent to denied.',
         'Choosing Play loads the original game from a third-party domain. The game host may receive browser and network information and use browser storage under its own practices. Links to the original listing open a separate service.',
         'The guide cannot read your controls, score or other private state inside the embedded game. Use the contact page to report a privacy concern about this guide.',
       ],
@@ -128,6 +129,7 @@ export const policies = {
       description: '了解本站与嵌入游戏如何处理网站访问。',
       paragraphs: [
         '本站是独立玩法指南，公开页面无需登录。部署后会使用 Cloudflare 提供网页、处理访问请求及保护服务。',
+        '本站使用 Google Analytics 了解页面访问和攻略的使用情况。Google 可能使用分析 Cookie 衡量访问量。本站将广告相关的数据权限设为拒绝。',
         '点击「开始游戏」后，浏览器会连接第三方域名以加载原版。游戏服务可能接收浏览器及网络信息，也可能使用浏览器存储，具体做法以其自身政策为准。打开原版作品页也会进入第三方服务。',
         '本站无法读取嵌入游戏里的操作、分数或其他内部状态。如需报告与本站有关的隐私问题，请使用联系页面。',
       ],
