@@ -270,7 +270,7 @@ p { margin: 0 0 1.15em; }
   border-radius: .7rem 0 0 .7rem;
   background-color: #0a271b45;
 }
-.game-tools :is(button, a) {
+.game-tools button {
   display: flex;
   align-items: center;
   width: 100%;
@@ -285,8 +285,8 @@ p { margin: 0 0 1.15em; }
   white-space: nowrap;
   cursor: pointer;
 }
-.game-tools :is(button, a) + * { border-top: 1px solid #a2ba936f; }
-.game-tools :is(button:not(:disabled), a):hover { background-color: #b4d1a025; }
+.game-tools button + button { border-top: 1px solid #a2ba936f; }
+.game-tools button:not(:disabled):hover { background-color: #b4d1a025; }
 .game-tools button:disabled { color: #bccabb; opacity: .7; cursor: default; }
 .game-tools svg { flex: none; }
 .stage-legend { pointer-events: none; position: absolute; inset: 0; }
@@ -338,11 +338,24 @@ p { margin: 0 0 1.15em; }
   grid-row: 1;
   align-self: start;
   max-width: 24ch;
-  margin: calc(clamp(.7rem, 3.1vw, 3rem) + clamp(48px, 3.7vw, 57px) * 3 + .7rem) .25rem 0 var(--board-offset);
+  margin: calc(clamp(.7rem, 3.1vw, 3rem) + clamp(48px, 3.7vw, 57px) * 2 + .7rem) .25rem 0 var(--board-offset);
   color: #f0ead9;
   font-size: .89rem;
   line-height: 1.33;
 }
+.original-game-link {
+  position: absolute;
+  inset-inline-end: 0;
+  inset-block-end: .35rem;
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  color: #d9e7d9;
+  font-size: .8rem;
+  line-height: 1.25;
+  text-decoration: none;
+}
+.original-game-link:is(:hover, :focus-visible) { text-decoration: underline; }
 .has-expanded-player { overflow: hidden; }
 .has-expanded-player .play-stage { z-index: 3; }
 .player:fullscreen, .player.is-expanded {
@@ -363,7 +376,7 @@ p { margin: 0 0 1.15em; }
   border-radius: .5rem;
 }
 .player:fullscreen .game-tools, .player.is-expanded .game-tools {
-  grid-template-columns: repeat(3, auto);
+  grid-template-columns: repeat(2, auto);
   justify-content: center;
   margin: 0;
   border: 0;
@@ -577,15 +590,15 @@ strong { font-weight: 600; }
   .game-frame { width: var(--board); justify-self: center; }
   .game-tools {
     max-width: var(--board);
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     justify-self: center;
     margin: 0;
     border: 1px solid #a2ba936f;
     background: #0a271bd6;
     border-radius: .55rem;
   }
-  .game-tools :is(button, a) { min-height: 45px; gap: .4rem; padding: .35rem .45rem; justify-content: center; font-size: .93rem; }
-  .game-tools :is(button, a) + * { border-top: 0; border-left: 1px solid #a2ba936f; }
+  .game-tools button { min-height: 45px; gap: .4rem; padding: .35rem .45rem; justify-content: center; font-size: .93rem; }
+  .game-tools button + button { border-top: 0; border-left: 1px solid #a2ba936f; }
   .stage-legend { display: none; }
   .atlas-footer { grid-row: 3; margin-top: .5rem; }
   .connection-note { grid-column: 1; grid-row: 2; max-width: none; margin: .45rem 0 0; text-align: center; }

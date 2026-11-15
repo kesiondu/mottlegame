@@ -54,9 +54,6 @@ const palette = lang === 'zh'
         <button type="button" data-fullscreen hidden aria-pressed="false">
           <Icon name="fullscreen" /> <span data-fullscreen-text>{t.fullscreen}</span>
         </button>
-        <a href={sources.original} data-original target="_blank" rel="noopener noreferrer">
-          <Icon name="external" /> {t.original}
-        </a>
       </div>
     </div>
     <div class="stage-legend" aria-hidden="true">
@@ -68,6 +65,9 @@ const palette = lang === 'zh'
       <div class="ink-samples" aria-hidden="true">{palette.map((_, index) => <i class={`sample-${index}`}></i>)}</div>
     </div>
     <p class="connection-note">{t.frameNote}</p>
+    <a class="original-game-link" href={sources.original} data-original target="_blank" rel="noopener noreferrer">
+      {t.original}
+    </a>
   </div>
 </section>
 <script is:inline src="/player.js" defer></script>
