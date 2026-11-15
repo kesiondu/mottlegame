@@ -4,6 +4,7 @@ import { content, sources } from './content.mjs';
 const context = 'https://schema.org';
 const website = `${origin}/#website`;
 const game = `${origin}/#mottle-hide-and-seek`;
+const shareImage = `${origin}/art/mottle-game-share.jpg`;
 
 export function homeSchema(lang) {
   const copy = content[lang];
@@ -24,7 +25,15 @@ export function homeSchema(lang) {
         isPartOf: { '@id': website },
         about: { '@id': game },
         hasPart: { '@id': `${url}#faq` },
-        primaryImageOfPage: `${origin}/art/mottle-game-share.jpg`,
+        primaryImageOfPage: {
+          '@type': 'ImageObject',
+          '@id': `${shareImage}#primaryimage`,
+          url: shareImage,
+          contentUrl: shareImage,
+          width: 1200,
+          height: 630,
+          representativeOfPage: true,
+        },
         ...(copy.guide.updated ? { dateModified: copy.guide.updated } : {}),
       },
       {
@@ -53,7 +62,10 @@ export function homeSchema(lang) {
 
 export function guideSchema(lang, guide) {
   const url = new URL(localized(lang, 'play-guide'), origin).href;
-  const images = guide.evidence ?? guide.sections.flatMap((section) => section.figures ?? []);
+  const sectionImages = guide.sections.flatMap((section) => section.figures ?? []);
+  const images = guide.evidence ? [...guide.evidence] : [...sectionImages];
+  const scoreImage = sectionImages.find(({ path }) => path === '/evidence/17-best-1000.webp');
+  if (scoreImage && !images.some(({ path }) => path === scoreImage.path)) images.push(scoreImage);
   return {
     '@context': context,
     '@type': 'Article',
@@ -67,7 +79,7 @@ export function guideSchema(lang, guide) {
     about: { '@type': 'VideoGame', '@id': game, name: 'Mottle – Hide & Seek', url: sources.original },
     image: (images.length
       ? images.map((e) => new URL(e.path, origin).href)
-      : [`${origin}/art/mottle-game-share.jpg`]),
+      : [shareImage]),
     citation: sources.original,
     ...(guide.updated ? { dateModified: guide.updated } : {}),
   };
