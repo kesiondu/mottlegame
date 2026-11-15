@@ -1,6 +1,6 @@
 ---
 import Icon from './Icon.astro';
-import { ui } from '../data/site.mjs';
+import { asset, ui } from '../data/site.mjs';
 import { sources } from '../data/content.mjs';
 const { lang } = Astro.props;
 const t = ui[lang];
@@ -26,10 +26,10 @@ const palette = lang === 'zh'
       <div class="game-frame">
         <img
           class="game-poster"
-          src="/art/mottle-tiles.webp"
-          srcset="/art/mottle-tiles-small.webp 640w, /art/mottle-tiles.webp 1024w"
+          src={asset('/images/mottle-game-camouflage-tiles.webp')}
+          srcset={`${asset('/images/mottle-game-camouflage-tiles-small.webp')} 640w, ${asset('/images/mottle-game-camouflage-tiles.webp')} 1024w`}
           sizes="(max-width: 620px) 92vw, (max-width: 1000px) 540px, 41vw"
-          alt=""
+          alt="Mottle game camouflage tiles and fireflies"
           fetchpriority="high"
           width="1024"
           height="1024"

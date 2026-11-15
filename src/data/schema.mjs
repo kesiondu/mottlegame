@@ -1,10 +1,10 @@
-import { languages, localized, origin } from './site.mjs';
+import { asset, languages, localized, origin } from './site.mjs';
 import { content, sources } from './content.mjs';
 
 const context = 'https://schema.org';
 const website = `${origin}/#website`;
 const game = `${origin}/#mottle-hide-and-seek`;
-const shareImage = `${origin}/art/mottle-game-share.jpg`;
+const shareImage = asset('/images/mottle-game-hide-and-seek-social-share.jpg');
 
 export function homeSchema(lang) {
   const copy = content[lang];
@@ -64,7 +64,7 @@ export function guideSchema(lang, guide) {
   const url = new URL(localized(lang, 'play-guide'), origin).href;
   const sectionImages = guide.sections.flatMap((section) => section.figures ?? []);
   const images = guide.evidence ? [...guide.evidence] : [...sectionImages];
-  const scoreImage = sectionImages.find(({ path }) => path === '/evidence/17-best-1000.webp');
+  const scoreImage = sectionImages.find(({ path }) => path.endsWith('/mottle-game-final-score-1000-round-5.webp'));
   if (scoreImage && !images.some(({ path }) => path === scoreImage.path)) images.push(scoreImage);
   return {
     '@context': context,

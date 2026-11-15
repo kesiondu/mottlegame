@@ -24,23 +24,23 @@ The original 8x.gg listing credits Star Lord and describes drag-to-run, release-
 
 | 图 | 观察点 |
 | --- | --- |
-| [01 · Round 1 开局](../public/evidence/01-hide-round-1.webp) | HIDE 3、0 分、三颗心 |
-| [02 · 首轮存活](../public/evidence/02-survive-round-1.webp) | Round 2、100 分、三颗心 |
-| [03 · Round 4](../public/evidence/03-round-4.webp) | 600 分、三颗心、三名搜寻者 |
-| [04 · 警戒上升](../public/evidence/04-alert-rising.webp) | 红色警戒反馈、Alert 49% |
-| [05 · 扣命](../public/evidence/05-life-lost.webp) | SPOTTED 文案与两颗心 |
-| [06 · 拖动](../public/evidence/06-moving.webp) | 角色在右侧显橙色，Camo 0% |
-| [07 · 静止](../public/evidence/07-hidden.webp) | 角色颜色接近脚下色块，Camo 100% |
-| [08 · 收集前](../public/evidence/08-firefly-before.webp) | 同一轮 0 分、画面上方绿色色块的萤火虫 |
-| [09 · 收集后](../public/evidence/09-firefly-after.webp) | 10 分、角色身旁的收集特效 |
-| [10 · 暂停](../public/evidence/10-pause.webp) | PAUSED、RESUME 和 QUIT |
-| [11 · 结算](../public/evidence/11-caught-out.webp) | 无剩余生命，CAUGHT OUT |
-| [12 · 再次暴露](../public/evidence/12-spotted.webp) | 两颗心、Alert 86%、Camo 0% |
-| [13 · 同轮重试](../public/evidence/13-try-remaining-life.webp) | 一颗心、Round 1、Hide 3 |
-| [14 · 100 分结算](../public/evidence/14-new-best.webp) | SCORE 100、BEST 100、ROUNDS 2 和 NEW BEST! |
-| [15 · 第三轮开局](../public/evidence/15-round-3-score.webp) | 300 分、三颗心、两名可见的搜寻者 |
-| [16 · 第四轮通关](../public/evidence/16-round-4-clear.webp) | 通关奖励 +400、总分 1,000、三颗心 |
-| [17 · 1,000 分结算](../public/evidence/17-best-1000.webp) | 本次最高结算，ROUNDS 5 |
+| [01 · Round 1 开局](../assets/r2/images/mottle-game-round-1-hide-countdown.webp) | HIDE 3、0 分、三颗心 |
+| [02 · 首轮存活](../assets/r2/images/mottle-game-round-1-survival-score-100.webp) | Round 2、100 分、三颗心 |
+| [03 · Round 4](../assets/r2/images/mottle-game-round-4-three-seekers-score-600.webp) | 600 分、三颗心、三名搜寻者 |
+| [04 · 警戒上升](../assets/r2/images/mottle-game-alert-meter-49-percent.webp) | 红色警戒反馈、Alert 49% |
+| [05 · 扣命](../assets/r2/images/mottle-game-spotted-life-lost.webp) | SPOTTED 文案与两颗心 |
+| [06 · 拖动](../assets/r2/images/mottle-game-chameleon-moving-camo-zero.webp) | 角色在右侧显橙色，Camo 0% |
+| [07 · 静止](../assets/r2/images/mottle-game-chameleon-hidden-camo-100.webp) | 角色颜色接近脚下色块，Camo 100% |
+| [08 · 收集前](../assets/r2/images/mottle-game-firefly-before-pickup.webp) | 同一轮 0 分、画面上方绿色色块的萤火虫 |
+| [09 · 收集后](../assets/r2/images/mottle-game-firefly-after-pickup-score-10.webp) | 10 分、角色身旁的收集特效 |
+| [10 · 暂停](../assets/r2/images/mottle-game-pause-menu.webp) | PAUSED、RESUME 和 QUIT |
+| [11 · 结算](../assets/r2/images/mottle-game-caught-out-score-zero.webp) | 无剩余生命，CAUGHT OUT |
+| [12 · 再次暴露](../assets/r2/images/mottle-game-searchlight-alert-86-percent.webp) | 两颗心、Alert 86%、Camo 0% |
+| [13 · 同轮重试](../assets/r2/images/mottle-game-round-retry-one-life.webp) | 一颗心、Round 1、Hide 3 |
+| [14 · 100 分结算](../assets/r2/images/mottle-game-new-best-score-100.webp) | SCORE 100、BEST 100、ROUNDS 2 和 NEW BEST! |
+| [15 · 第三轮开局](../assets/r2/images/mottle-game-round-3-score-300.webp) | 300 分、三颗心、两名可见的搜寻者 |
+| [16 · 第四轮通关](../assets/r2/images/mottle-game-round-4-clear-score-1000.webp) | 通关奖励 +400、总分 1,000、三颗心 |
+| [17 · 1,000 分结算](../assets/r2/images/mottle-game-final-score-1000-round-5.webp) | 本次最高结算，ROUNDS 5 |
 
 ## 玩法分析 / Design interpretation
 

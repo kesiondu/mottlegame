@@ -1,8 +1,10 @@
 export const origin = 'https://mottlegame.cc';
+export const assetOrigin = 'https://assets.mottlegame.cc';
+export const asset = (path) => new URL(path, `${assetOrigin}/`).href;
 export const languages = { en: 'en', zh: 'zh-Hans' };
 export const localized = (lang, page = '') =>
   `/${lang === 'zh' ? 'zh/' : ''}${page ? `${page}/` : ''}`;
-export const legalPages = ['privacy', 'terms', 'contact'];
+export const legalPages = ['about', 'privacy', 'terms', 'contact'];
 export const pages = ['', 'play-guide', ...legalPages];
 
 export const ui = {
@@ -15,6 +17,7 @@ export const ui = {
     tips: 'Tips',
     faq: 'FAQ',
     guide: 'Play Guide',
+    about: 'About',
     privacy: 'Privacy',
     terms: 'Terms',
     contact: 'Contact',
@@ -47,6 +50,7 @@ export const ui = {
     tips: '技巧',
     faq: '常见问题',
     guide: '实测攻略',
+    about: '关于本站',
     privacy: '隐私',
     terms: '使用条款',
     contact: '联系',
@@ -74,6 +78,15 @@ export const ui = {
 
 export const policies = {
   en: {
+    about: {
+      heading: 'About Mottle Game',
+      description: 'About this independent player guide for Mottle – Hide & Seek by Star Lord.',
+      paragraphs: [
+        'Mottle Game is an independent player guide for Mottle – Hide & Seek, created by Star Lord and published on 8x.gg. This site is not the official game site and is not affiliated with Star Lord or 8x.gg.',
+        'The guide explains the controls, camouflage system and scoring through first-hand play sessions. It also gives players a focused browser entry point while keeping the original creator and listing visible.',
+        'The game, its name, artwork and gameplay assets belong to their respective rights holders. This guide credits and links to the original work. Use the contact page to report a correction about the guide.',
+      ],
+    },
     privacy: {
       heading: 'Privacy',
       description: 'How Mottle Game handles visits and the embedded game.',
@@ -101,6 +114,15 @@ export const policies = {
     },
   },
   zh: {
+    about: {
+      heading: '关于 Mottle Game',
+      description: '了解这个为 Star Lord《变色龙：躲猫猫》制作的独立玩家指南。',
+      paragraphs: [
+        'Mottle Game 是《变色龙：躲猫猫》（Mottle – Hide & Seek）的独立玩家指南。游戏由 Star Lord 创作并发布在 8x.gg；本站不是游戏官网，也不隶属于 Star Lord 或 8x.gg。',
+        '本站根据实际游玩记录整理操作方法、伪装机制和得分观察，并提供一个更专注的浏览器入口。页面始终保留原作者署名和原版作品链接。',
+        '游戏名称、美术、游戏素材及相关权利归各自权利人所有。本指南只对自己编写的页面内容负责。如需报告攻略错误，请使用联系页面。',
+      ],
+    },
     privacy: {
       heading: '隐私',
       description: '了解本站与嵌入游戏如何处理网站访问。',

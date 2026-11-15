@@ -3,7 +3,8 @@ import { access, readFile } from 'node:fs/promises';
 
 const root = new URL('../dist/', import.meta.url);
 const origin = 'https://mottlegame.cc';
-const pages = ['', 'play-guide/', 'privacy/', 'terms/', 'contact/'];
+const assetOrigin = 'https://assets.mottlegame.cc';
+const pages = ['', 'play-guide/', 'about/', 'privacy/', 'terms/', 'contact/'];
 const getFile = (file) => readFile(new URL(file, root), 'utf8');
 const title = 'Mottle Game — Play Online Free, Meaning, Controls & Tips';
 const description = 'Mottle is a free browser hide-and-seek game. Learn what Mottle means, how to play, Firefly and Camo mechanics, controls and the best hiding tips.';
@@ -11,6 +12,7 @@ const englishHeadings = [
   'What Is Mottle Game', 'What Does Mottle Mean?', 'Is Mottle a Board Game?',
   'How to Play', 'Controls', 'Mechanics', 'Tips', 'Download & Unblocked', 'FAQ',
 ];
+const builtTitles = [];
 
 function decode(text) {
   return text.replaceAll('&amp;', '&').replaceAll('&quot;', '"').replaceAll('&#39;', "'")
@@ -44,6 +46,8 @@ for (const [prefix, lang] of [['', 'en'], ['zh/', 'zh-Hans']]) {
   for (const page of pages) {
     const route = '/' + prefix + page;
     const html = await getFile(prefix + page + 'index.html');
+    const pageTitle = plain(html.match(/<title>(.*?)<\/title>/)?.[1] ?? '');
+    builtTitles.push(pageTitle);
     assert(html.includes(`<html lang="${lang}"`), `${route} html lang`);
     assert(html.includes(`rel="canonical" href="${origin}${route}"`), `${route} self canonical`);
     assert(html.includes(`hreflang="en" href="${origin}/${page}"`), `${route} English alternate`);
@@ -54,14 +58,23 @@ for (const [prefix, lang] of [['', 'en'], ['zh/', 'zh-Hans']]) {
     for (const asset of html.matchAll(/<img[^>]+src="(\/[^"]+)"/g)) {
       await access(new URL(asset[1].slice(1), root));
     }
+    for (const image of html.matchAll(/<img[^>]+src="([^"]+)"/g)) {
+      assert(image[1].startsWith(assetOrigin), `${route} image should use R2 asset domain: ${image[1]}`);
+    }
     if (page === 'play-guide/') {
       assert.equal(schema(html)['@type'], 'Article');
+      assert(!pageTitle.startsWith('Mottle Game'), `${route} title should not start with Mottle Game`);
+      assert.equal(
+        plain(html.match(/<h1[^>]*>(.*?)<\/h1>/)?.[1]),
+        lang === 'en' ? 'How to Play Mottle' : '怎么玩《变色龙：躲猫猫》',
+        `${route} guide H1`,
+      );
       assert.match(html, /<figure class="evidence-item">/, `${route} first-hand screenshots`);
       assert.match(html, /id="run-log"/, `${route} observed trial data`);
     }
     if (page) continue;
 
-    for (const policy of ['privacy/', 'terms/', 'contact/']) {
+    for (const policy of ['about/', 'privacy/', 'terms/', 'contact/']) {
       assert(html.includes(`href="/${prefix}${policy}"`), `${route} footer link ${policy}`);
     }
     assert(html.indexOf('id="play"') < html.indexOf('<h1'), `${route} game first`);
@@ -92,5 +105,7 @@ for (const [prefix, lang] of [['', 'en'], ['zh/', 'zh-Hans']]) {
     }
   }
 }
+
+assert.equal(new Set(builtTitles).size, builtTitles.length, 'Every page title should be unique');
 
 console.log(`${expectedUrls.length} canonical routes, hreflang, FAQ parity, assets, sitemap, robots and 404 verified.`);

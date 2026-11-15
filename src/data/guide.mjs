@@ -1,13 +1,15 @@
+import { asset } from './site.mjs';
+
 export const guide = {
   en: {
-    title: 'Mottle Game Play Guide | Camo, Alert & High-Score Routes',
+    title: 'How to Play Mottle — Camo, Alert & High-Score Routes',
     description: 'A pictured walkthrough of Mottle — Hide & Seek. Learn how to move, read the Seekers’ lights, collect Fireflies and practice for a higher score.',
-    h1: 'Mottle Game Play Guide',
+    h1: 'How to Play Mottle',
     intro: 'Look at the light before you look at the Firefly. In Mottle — Hide & Seek, a short drag can earn points, but letting go in time is what gives the chameleon a chance to blend. This guide follows a run from the opening countdown to the last life and explains what to practice for a higher score.',
     updated: '2026-11-15',
     evidence: [
-      { path: '/evidence/06-moving.webp', alt: 'The chameleon moved to a different patch while the Camo meter reads 0%', caption: 'During Seek, holding the drag moves the chameleon and Camo reads 0%.', width: 900, height: 792 },
-      { path: '/evidence/07-hidden.webp', alt: 'The chameleon is still on the board while the Camo meter reads 100%', caption: 'After releasing, Camo builds back to 100% as the character blends.', width: 900, height: 792 },
+      { path: asset('/images/mottle-game-chameleon-moving-camo-zero.webp'), alt: 'The chameleon moved to a different patch while the Camo meter reads 0%', caption: 'During Seek, holding the drag moves the chameleon and Camo reads 0%.', width: 900, height: 792 },
+      { path: asset('/images/mottle-game-chameleon-hidden-camo-100.webp'), alt: 'The chameleon is still on the board while the Camo meter reads 100%', caption: 'After releasing, Camo builds back to 100% as the character blends.', width: 900, height: 792 },
     ],
     runTable: {
       columns: ['Trial', 'What we did', 'What the screen showed'],
@@ -37,7 +39,7 @@ export const guide = {
           { label: 'Reassess at the next countdown.', text: 'Scan the new placement and the current beam directions. Choose another short route before committing to a longer one.' },
         ],
         figures: [
-          { path: '/evidence/01-hide-round-1.webp', alt: 'Mottle opening Hide screen with three seconds on the timer, three lives, Camo 100% and Alert 0%', caption: 'Round 1 during the Hide countdown. The score starts at 0 and all three hearts are visible.' },
+          { path: asset('/images/mottle-game-round-1-hide-countdown.webp'), alt: 'Mottle opening Hide screen with three seconds on the timer, three lives, Camo 100% and Alert 0%', caption: 'Round 1 during the Hide countdown. The score starts at 0 and all three hearts are visible.' },
         ],
       },
       {
@@ -53,13 +55,13 @@ export const guide = {
         ],
         links: [{ label: 'Creator’s original game listing', href: 'https://www.8x.gg/apps/xPKXL5uurAzb6pAG' }],
         figures: [
-          { path: '/evidence/02-survive-round-1.webp', alt: 'Round 2 Hide screen with Score 100 and all three lives', caption: 'Surviving Round 1 raised Score to 100 in the stationary run. The player kept all three hearts.' },
-          { path: '/evidence/03-round-4.webp', alt: 'Round 4 Hide screen showing three Seekers, three hearts and Score 600', caption: 'At the start of Round 4 in the same run, there were three Seekers on screen and Score was 600.' },
-          { path: '/evidence/04-alert-rising.webp', alt: 'The warning meter is at 49% during the exposure test', caption: 'Alert reached 49% in this frame, before the meter filled later in the same test.' },
-          { path: '/evidence/05-life-lost.webp', alt: 'Spotted screen with a lost-life message and fewer hearts in the HUD', caption: 'The game confirms the catch and takes a life. The player retries the same round.' },
-          { path: '/evidence/08-firefly-before.webp', alt: 'Round 1 before a single Firefly pickup, with a score of zero', caption: 'Before the short drag, Score was 0 in the active search.' },
-          { path: '/evidence/09-firefly-after.webp', alt: 'Round 1 after a single Firefly pickup, with a score of ten', caption: 'The same Round 1 pickup raised Score to 10.' },
-          { path: '/evidence/10-pause.webp', alt: 'The original game pause menu offers Resume and Quit', caption: 'The game’s own Pause button held the Seek clock at 9 seconds.' },
+          { path: asset('/images/mottle-game-round-1-survival-score-100.webp'), alt: 'Round 2 Hide screen with Score 100 and all three lives', caption: 'Surviving Round 1 raised Score to 100 in the stationary run. The player kept all three hearts.' },
+          { path: asset('/images/mottle-game-round-4-three-seekers-score-600.webp'), alt: 'Round 4 Hide screen showing three Seekers, three hearts and Score 600', caption: 'At the start of Round 4 in the same run, there were three Seekers on screen and Score was 600.' },
+          { path: asset('/images/mottle-game-alert-meter-49-percent.webp'), alt: 'The warning meter is at 49% during the exposure test', caption: 'Alert reached 49% in this frame, before the meter filled later in the same test.' },
+          { path: asset('/images/mottle-game-spotted-life-lost.webp'), alt: 'Spotted screen with a lost-life message and fewer hearts in the HUD', caption: 'The game confirms the catch and takes a life. The player retries the same round.' },
+          { path: asset('/images/mottle-game-firefly-before-pickup.webp'), alt: 'Round 1 before a single Firefly pickup, with a score of zero', caption: 'Before the short drag, Score was 0 in the active search.' },
+          { path: asset('/images/mottle-game-firefly-after-pickup-score-10.webp'), alt: 'Round 1 after a single Firefly pickup, with a score of ten', caption: 'The same Round 1 pickup raised Score to 10.' },
+          { path: asset('/images/mottle-game-pause-menu.webp'), alt: 'The original game pause menu offers Resume and Quit', caption: 'The game’s own Pause button held the Seek clock at 9 seconds.' },
         ],
       },
       {
@@ -87,9 +89,9 @@ export const guide = {
           { label: 'Record score, round and lives.', text: 'Keep the final screen. Compare similar routes across more than one run before deciding a change helped.' },
         ],
         figures: [
-          { path: '/evidence/15-round-3-score.webp', alt: 'Round 3 opening at 300 points with three hearts', caption: 'The stationary replay entered Round 3 with Score 300 and all three hearts.' },
-          { path: '/evidence/16-round-4-clear.webp', alt: 'Round 4 clear shows +400, Score 1000 and three hearts', caption: 'Clearing Round 4 while staying still raised the score to 1,000. All three hearts remained.' },
-          { path: '/evidence/17-best-1000.webp', alt: 'Original results screen showing SCORE 1000, BEST 1000, and ROUNDS 5', caption: 'The completed 1,000-point test. We reached Round 5 after four clears.' },
+          { path: asset('/images/mottle-game-round-3-score-300.webp'), alt: 'Round 3 opening at 300 points with three hearts', caption: 'The stationary replay entered Round 3 with Score 300 and all three hearts.' },
+          { path: asset('/images/mottle-game-round-4-clear-score-1000.webp'), alt: 'Round 4 clear shows +400, Score 1000 and three hearts', caption: 'Clearing Round 4 while staying still raised the score to 1,000. All three hearts remained.' },
+          { path: asset('/images/mottle-game-final-score-1000-round-5.webp'), alt: 'Original results screen showing SCORE 1000, BEST 1000, and ROUNDS 5', caption: 'The completed 1,000-point test. We reached Round 5 after four clears.' },
         ],
       },
       {
@@ -100,23 +102,23 @@ export const guide = {
           'For your next run, pick one change you can observe. Start the crossing later, find a closer stop, or leave a distant Firefly alone. Keep the change small enough to trace it back to the screen.',
         ],
         figures: [
-          { path: '/evidence/12-spotted.webp', alt: 'Red search cone with Alert 86%, Camo 0% and two hearts remaining', caption: 'During sustained exposure, the alert rises while the character is moving through the red cone.' },
-          { path: '/evidence/13-try-remaining-life.webp', alt: 'Round 1 Hide restarts with one heart, Alert 0% and Camo 100%', caption: 'With one heart left, the next attempt starts in the same round. The alert meter resets.' },
-          { path: '/evidence/11-caught-out.webp', alt: 'CAUGHT OUT results screen with SCORE 0, BEST 0 and ROUNDS 1', caption: 'After the final heart, the original game shows the results and a Play button for a new run.' },
-          { path: '/evidence/14-new-best.webp', alt: 'CAUGHT OUT with SCORE 100, BEST 100, ROUNDS 2 and the NEW BEST label', caption: 'A separate run ended in Round 2 with 100 points. The game marked these results as NEW BEST!' },
+          { path: asset('/images/mottle-game-searchlight-alert-86-percent.webp'), alt: 'Red search cone with Alert 86%, Camo 0% and two hearts remaining', caption: 'During sustained exposure, the alert rises while the character is moving through the red cone.' },
+          { path: asset('/images/mottle-game-round-retry-one-life.webp'), alt: 'Round 1 Hide restarts with one heart, Alert 0% and Camo 100%', caption: 'With one heart left, the next attempt starts in the same round. The alert meter resets.' },
+          { path: asset('/images/mottle-game-caught-out-score-zero.webp'), alt: 'CAUGHT OUT results screen with SCORE 0, BEST 0 and ROUNDS 1', caption: 'After the final heart, the original game shows the results and a Play button for a new run.' },
+          { path: asset('/images/mottle-game-new-best-score-100.webp'), alt: 'CAUGHT OUT with SCORE 100, BEST 100, ROUNDS 2 and the NEW BEST label', caption: 'A separate run ended in Round 2 with 100 points. The game marked these results as NEW BEST!' },
         ],
       },
     ],
   },
   zh: {
-    title: '变色龙：躲猫猫图文攻略｜伪装、警戒值与高分路线',
+    title: '怎么玩《变色龙：躲猫猫》｜伪装、警戒值与高分路线',
     description: '《变色龙：躲猫猫》中文图文攻略。看懂搜寻者的扇形灯光、萤火虫得分、Camo 伪装条和 Alert 警戒值，从第一轮练到稳定冲分。',
-    h1: '《变色龙：躲猫猫》图文攻略',
+    h1: '怎么玩《变色龙：躲猫猫》',
     intro: '先看灯，再看萤火虫。《变色龙：躲猫猫》里，拖一下可以得分，及时放手才有时间变色。这篇攻略从开局倒计时讲到最后一条命，说明画面上看到了什么，以及怎样练出更稳定的拿分路线。',
     updated: '2026-11-15',
     evidence: [
-      { path: '/evidence/06-moving.webp', alt: '变色龙拖动到另一块地面，Camo 为 0%', caption: 'Seek 阶段拖动角色，伪装条降到 0%。', width: 900, height: 792 },
-      { path: '/evidence/07-hidden.webp', alt: '变色龙在地面停止移动，Camo 为 100%', caption: '松手停住后，角色融入地面，伪装条回到 100%。', width: 900, height: 792 },
+      { path: asset('/images/mottle-game-chameleon-moving-camo-zero.webp'), alt: '变色龙拖动到另一块地面，Camo 为 0%', caption: 'Seek 阶段拖动角色，伪装条降到 0%。', width: 900, height: 792 },
+      { path: asset('/images/mottle-game-chameleon-hidden-camo-100.webp'), alt: '变色龙在地面停止移动，Camo 为 100%', caption: '松手停住后，角色融入地面，伪装条回到 100%。', width: 900, height: 792 },
     ],
     runTable: {
       columns: ['测试局', '怎么操作', '屏幕上看到了什么'],
@@ -144,7 +146,7 @@ export const guide = {
           { label: '每轮开局重新认路。', text: '看清新位置和灯光方向，先找一段好跑的短路线。' },
         ],
         figures: [
-          { path: '/evidence/01-hide-round-1.webp', alt: '第一轮 Hide 画面显示 3 秒倒计时、三条命、伪装 100% 和警戒 0%', caption: '第一轮的 Hide 倒计时。左侧分数为 0，三颗爱心都在。' },
+          { path: asset('/images/mottle-game-round-1-hide-countdown.webp'), alt: '第一轮 Hide 画面显示 3 秒倒计时、三条命、伪装 100% 和警戒 0%', caption: '第一轮的 Hide 倒计时。左侧分数为 0，三颗爱心都在。' },
         ],
       },
       {
@@ -160,13 +162,13 @@ export const guide = {
         ],
         links: [{ label: '作者的原版作品页面', href: 'https://www.8x.gg/apps/xPKXL5uurAzb6pAG' }],
         figures: [
-          { path: '/evidence/02-survive-round-1.webp', alt: '第二轮 Hide 画面显示 100 分，三条命都在', caption: '静止测试撑过第一轮后得到 100 分，三颗爱心都在。' },
-          { path: '/evidence/03-round-4.webp', alt: '第四轮开局有三个搜寻者、三颗爱心，分数为 600', caption: '同一局走到第四轮开局时，画面里有三个搜寻者，累计 600 分。' },
-          { path: '/evidence/04-alert-rising.webp', alt: '暴露测试中警戒条达到 49%', caption: '这一帧的 Alert 是 49%。同一次暴露测试中，警戒条后来升到了 100%。' },
-          { path: '/evidence/05-life-lost.webp', alt: '原版游戏显示被发现并失去一条生命的提示', caption: '被抓后少了一条命，随后重试同一轮。' },
-          { path: '/evidence/08-firefly-before.webp', alt: '第一轮捡萤火虫之前，分数为 0', caption: '第一次短拖前，第一轮还在搜寻阶段，Score 为 0。' },
-          { path: '/evidence/09-firefly-after.webp', alt: '第一轮单次拾取后，分数为 10', caption: '同一轮中拾取一只萤火虫后，Score 升到 10。' },
-          { path: '/evidence/10-pause.webp', alt: '原版暂停菜单有 Resume 和 Quit 两项', caption: '点游戏内暂停后，Seek 倒计时停在 9 秒。' },
+          { path: asset('/images/mottle-game-round-1-survival-score-100.webp'), alt: '第二轮 Hide 画面显示 100 分，三条命都在', caption: '静止测试撑过第一轮后得到 100 分，三颗爱心都在。' },
+          { path: asset('/images/mottle-game-round-4-three-seekers-score-600.webp'), alt: '第四轮开局有三个搜寻者、三颗爱心，分数为 600', caption: '同一局走到第四轮开局时，画面里有三个搜寻者，累计 600 分。' },
+          { path: asset('/images/mottle-game-alert-meter-49-percent.webp'), alt: '暴露测试中警戒条达到 49%', caption: '这一帧的 Alert 是 49%。同一次暴露测试中，警戒条后来升到了 100%。' },
+          { path: asset('/images/mottle-game-spotted-life-lost.webp'), alt: '原版游戏显示被发现并失去一条生命的提示', caption: '被抓后少了一条命，随后重试同一轮。' },
+          { path: asset('/images/mottle-game-firefly-before-pickup.webp'), alt: '第一轮捡萤火虫之前，分数为 0', caption: '第一次短拖前，第一轮还在搜寻阶段，Score 为 0。' },
+          { path: asset('/images/mottle-game-firefly-after-pickup-score-10.webp'), alt: '第一轮单次拾取后，分数为 10', caption: '同一轮中拾取一只萤火虫后，Score 升到 10。' },
+          { path: asset('/images/mottle-game-pause-menu.webp'), alt: '原版暂停菜单有 Resume 和 Quit 两项', caption: '点游戏内暂停后，Seek 倒计时停在 9 秒。' },
         ],
       },
       {
@@ -194,9 +196,9 @@ export const guide = {
           { label: '留一张结算图。', text: '记下分数、结束轮次和剩余生命。想判断走法有没有用，可以用相近路线再打几局。' },
         ],
         figures: [
-          { path: '/evidence/15-round-3-score.webp', alt: '第三轮开局，分数 300，三颗爱心', caption: '复测时保持静止进入第三轮，分数为 300，三颗爱心都在。' },
-          { path: '/evidence/16-round-4-clear.webp', alt: '第四轮通关显示奖励 +400、总分 1000 和三颗爱心', caption: '静止通过第四轮后累计 1,000 分，三颗爱心都在。' },
-          { path: '/evidence/17-best-1000.webp', alt: '原版结算显示 SCORE 1000、BEST 1000 和 ROUNDS 5', caption: '本次最高结算为 1,000 分。通过前四轮，在第五轮结束。' },
+          { path: asset('/images/mottle-game-round-3-score-300.webp'), alt: '第三轮开局，分数 300，三颗爱心', caption: '复测时保持静止进入第三轮，分数为 300，三颗爱心都在。' },
+          { path: asset('/images/mottle-game-round-4-clear-score-1000.webp'), alt: '第四轮通关显示奖励 +400、总分 1000 和三颗爱心', caption: '静止通过第四轮后累计 1,000 分，三颗爱心都在。' },
+          { path: asset('/images/mottle-game-final-score-1000-round-5.webp'), alt: '原版结算显示 SCORE 1000、BEST 1000 和 ROUNDS 5', caption: '本次最高结算为 1,000 分。通过前四轮，在第五轮结束。' },
         ],
       },
       {
@@ -207,10 +209,10 @@ export const guide = {
           '下一局只试一项改动。晚一点横穿、换个近处停下的位置，或者放弃那只太远的萤火虫。这样比较容易看出哪里有改善。',
         ],
         figures: [
-          { path: '/evidence/12-spotted.webp', alt: '灯光变红，警戒值 86%，伪装 0%，还剩两条命', caption: '角色持续移动并暴露在红色光束中时，警戒值继续上涨。' },
-          { path: '/evidence/13-try-remaining-life.webp', alt: '第一轮从 Hide 重来，还剩一条命，Alert 为 0%、Camo 为 100%', caption: '还剩一颗爱心时，留在同一轮重试，警戒值重置。' },
-          { path: '/evidence/11-caught-out.webp', alt: 'CAUGHT OUT 结算画面显示 SCORE 0、BEST 0 和 ROUNDS 1', caption: '最后一条命用完后进入结算，可以点 Play 重新开局。' },
-          { path: '/evidence/14-new-best.webp', alt: 'CAUGHT OUT 结算画面显示 SCORE 100、BEST 100、ROUNDS 2 和 NEW BEST', caption: '另一局在第二轮结束，结算 100 分，游戏显示了 NEW BEST! 标签。' },
+          { path: asset('/images/mottle-game-searchlight-alert-86-percent.webp'), alt: '灯光变红，警戒值 86%，伪装 0%，还剩两条命', caption: '角色持续移动并暴露在红色光束中时，警戒值继续上涨。' },
+          { path: asset('/images/mottle-game-round-retry-one-life.webp'), alt: '第一轮从 Hide 重来，还剩一条命，Alert 为 0%、Camo 为 100%', caption: '还剩一颗爱心时，留在同一轮重试，警戒值重置。' },
+          { path: asset('/images/mottle-game-caught-out-score-zero.webp'), alt: 'CAUGHT OUT 结算画面显示 SCORE 0、BEST 0 和 ROUNDS 1', caption: '最后一条命用完后进入结算，可以点 Play 重新开局。' },
+          { path: asset('/images/mottle-game-new-best-score-100.webp'), alt: 'CAUGHT OUT 结算画面显示 SCORE 100、BEST 100、ROUNDS 2 和 NEW BEST', caption: '另一局在第二轮结束，结算 100 分，游戏显示了 NEW BEST! 标签。' },
         ],
       },
     ],

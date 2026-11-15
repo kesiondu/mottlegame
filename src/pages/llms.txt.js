@@ -14,6 +14,10 @@ export function GET() {
 - [Mottle Play Guide](${origin}/play-guide/): Illustrated gameplay notes, observed runs and strategy.
 - [实测攻略](${origin}/zh/play-guide/): 带实玩截图的玩法、测试记录和冲分技巧。
 
+## About this guide
+- [About Mottle Game](${origin}/about/): Ownership, editorial method and independent-site disclosure.
+- [关于本站](${origin}/zh/about/): 本站定位、内容方法与非官方说明。
+
 ## Original work
 - [8x.gg game listing](${sources.original})
 - [Star Lord](${sources.creator})

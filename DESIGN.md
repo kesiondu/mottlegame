@@ -70,7 +70,7 @@ The display face should feel rounded, confident and slightly compressed, matchin
 
 ## Artwork
 
-The built-in ImageGen tool created three plates from the approved concept. The build uses optimized derivatives under `public/art/`.
+The built-in ImageGen tool created three plates from the approved concept. Optimized derivatives are stored under `assets/r2/images/` and served from `https://assets.mottlegame.cc/images/`.
 
 | Plate | Generation brief |
 | --- | --- |
@@ -78,4 +78,4 @@ The built-in ImageGen tool created three plates from the approved concept. The b
 | `mottle-tiles.webp` | Paint a five-by-five camouflage grid with rounded tiles, a small chameleon, fireflies and one Seeker with a search cone. Leave all buttons and text to the site. |
 | `mineral-paper.webp` | Keep the left two thirds of the reading sheet pale. Layer broad moss, slate and clay swatches into its lower right. |
 
-`mottle-game-share.jpg` combines the first two plates for the share preview. The original gameplay screenshots appear under `public/evidence/` with captions describing each test. 
+`mottle-game-hide-and-seek-social-share.jpg` combines the first two plates for the share preview. The original gameplay screenshots are stored under `assets/r2/images/` with descriptive `mottle-game-*` filenames and captions describing each test.

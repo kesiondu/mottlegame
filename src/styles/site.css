@@ -120,7 +120,7 @@ p { margin: 0 0 1.15em; }
   position: relative;
   isolation: isolate;
   color: var(--cream);
-  background: var(--green) url('/art/paint-swatch-atlas.webp') center / 100% 100% no-repeat;
+  background: var(--green) url('https://assets.mottlegame.cc/images/mottle-game-paint-swatch-background.webp') center / 100% 100% no-repeat;
 }
 .game-composition {
   --board: clamp(420px, 40.37vw, 620px);
@@ -567,7 +567,7 @@ strong { font-weight: 600; }
 @media (min-width: 1001px) {
   .reading-surface:not(.subpage) {
     background: linear-gradient(180deg, transparent 50%, var(--paper)) center top / 100% 33.5vw no-repeat,
-      var(--paper) url('/art/mineral-paper.webp') center top / 100% auto no-repeat;
+      var(--paper) url('https://assets.mottlegame.cc/images/mottle-game-mineral-paper-background.webp') center top / 100% auto no-repeat;
   }
   .article-shell { padding-left: .3rem; }
 }
@@ -584,7 +584,7 @@ strong { font-weight: 600; }
     width: min(92%, 610px);
     padding-bottom: 2rem;
   }
-  .play-stage { background-image: url('/art/paint-swatch-atlas-small.webp'); background-size: cover; }
+  .play-stage { background-image: url('https://assets.mottlegame.cc/images/mottle-game-paint-swatch-background-small.webp'); background-size: cover; }
   .play-aside { display: none; }
   .player { grid-column: 1; grid-row: 1; grid-template-columns: minmax(0, 1fr); gap: .6rem; }
   .game-frame { width: var(--board); justify-self: center; }

@@ -1,6 +1,6 @@
 # 发布与验收
 
-生产域名为 `https://mottlegame.cc`，站点使用 Astro 静态输出。公开 GitHub 仓库使用站点源码、双语教程、发布说明和页面引用的实玩证据。原游戏仍由原发布方提供。
+生产域名为 `https://mottlegame.cc`，图片资源域名为 `https://assets.mottlegame.cc`，站点使用 Astro 静态输出。公开 GitHub 仓库使用站点源码、双语教程、发布说明和页面引用的实玩证据。原游戏仍由原发布方提供。
 
 ## 1. GitHub
 
@@ -42,6 +42,7 @@ gh repo create kesiondu/mottlegame --public --source=. --remote=origin --push \
 | `/does-not-exist` | 返回 404，并有返回首页的链接 |
 | 播放器 | 点击 Play 前页面没有游戏 iframe，点击后可进入原作，失败时保留重试和原站链接 |
 | 原作截图 | 截图与同局记录对应，图注能指出画面证明了什么 |
+| R2 图片 | 图片从 `assets.mottlegame.cc/images/` 返回 200，文件名为描述性的 `mottle-game-*`，类型与缓存头正确 |
 | 社交预览 | 标题、描述、图片和分享链接指向生产页 |
 
 在 Google Search Console 完成域名验证后提交 `https://mottlegame.cc/sitemap.xml`，再用 URL 检查工具查看两个首页和两个攻略页。记录提交日期和索引状态，随后跟踪表现。[Google Sitemap 文档](https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap) · [Google 本地化页面规则](https://developers.google.com/search/docs/specialty/international/localized-versions)

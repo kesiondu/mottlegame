@@ -3,14 +3,14 @@ import '@fontsource/kanit/latin-700.css';
 import '@fontsource/source-sans-3/latin-400.css';
 import '@fontsource/source-sans-3/latin-600.css';
 import '../styles/site.css';
-import { languages, localized, origin, ui } from '../data/site.mjs';
+import { asset, assetOrigin, languages, localized, origin, ui } from '../data/site.mjs';
 import { sources } from '../data/content.mjs';
 
 const { lang = 'en', page = '', title, description, schema, noindex = false, home = false } = Astro.props;
 const t = ui[lang];
 const other = lang === 'en' ? 'zh' : 'en';
 const canonical = new URL(localized(lang, page), origin).href;
-const image = new URL('/art/mottle-game-share.jpg', origin).href;
+const image = asset('/images/mottle-game-hide-and-seek-social-share.jpg');
 const homeUrl = localized(lang);
 const serialized = schema && JSON.stringify(schema).replace(/</g, '\\u003c');
 const nav = [
@@ -31,6 +31,7 @@ const nav = [
     </script>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="preconnect" href={assetOrigin} />
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="theme-color" content="#102d22" />
@@ -40,7 +41,7 @@ const nav = [
       <link rel="alternate" hreflang="zh-Hans" href={new URL(localized('zh', page), origin).href} />
       <link rel="alternate" hreflang="x-default" href={new URL(localized('en', page), origin).href} />
     </>}
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href={asset('/images/mottle-game-favicon.svg')} />
     <meta property="og:type" content={page === 'play-guide' ? 'article' : 'website'} />
     <meta property="og:site_name" content="Mottle Game" />
     <meta property="og:title" content={title} />
@@ -80,6 +81,7 @@ const nav = [
         </div>
         <nav aria-label={lang === 'zh' ? '页脚链接' : 'Footer'} class="footer-nav">
           <a href={localized(lang, 'play-guide')}>{t.guide}</a>
+          <a href={localized(lang, 'about')}>{t.about}</a>
           <a href={localized(lang, 'privacy')}>{t.privacy}</a>
           <a href={localized(lang, 'terms')}>{t.terms}</a>
           <a href={localized(lang, 'contact')}>{t.contact}</a>
