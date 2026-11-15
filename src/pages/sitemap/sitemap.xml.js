@@ -1,5 +1,5 @@
-import { guide } from '../data/guide.mjs';
-import { asset, localized, origin, pages } from '../data/site.mjs';
+import { guide } from '../../data/guide.mjs';
+import { asset, localized, origin, pages } from '../../data/site.mjs';
 
 const homeImages = [
   'mottle-game-favicon.svg',

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://mottlegame.cc/sitemap.xml
+Sitemap: https://mottlegame.cc/sitemap/sitemap.xml

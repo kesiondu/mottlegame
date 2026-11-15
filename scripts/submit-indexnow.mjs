@@ -2,7 +2,7 @@ const host = 'mottlegame.cc';
 const origin = `https://${host}`;
 const key = 'c653865ec2165f59c5939e42cda4649c';
 const keyLocation = `${origin}/${key}.txt`;
-const sitemapUrl = `${origin}/sitemap.xml`;
+const sitemapUrl = `${origin}/sitemap/sitemap.xml`;
 const endpoint = 'https://api.indexnow.org/indexnow';
 
 const sitemapResponse = await fetch(sitemapUrl, {

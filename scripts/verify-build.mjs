@@ -44,7 +44,7 @@ function verifyGoogleTag(html, route, scriptPolicy) {
   assert(scriptPolicy.includes('https://www.googletagmanager.com'), `${route} GTM host must be allowed`);
 }
 
-const sitemap = await getFile('sitemap.xml');
+const sitemap = await getFile('sitemap/sitemap.xml');
 const sitemapUrls = [...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map((match) => match[1]);
 const sitemapImages = [...sitemap.matchAll(/<image:loc>(.*?)<\/image:loc>/g)].map((match) => match[1]);
 const expectedUrls = pages.flatMap((page) => [origin + '/' + page, origin + '/zh/' + page]);
@@ -53,7 +53,7 @@ assert.equal(sitemapUrls.length, expectedUrls.length);
 assert.match(sitemap, /xmlns:image="http:\/\/www\.google\.com\/schemas\/sitemap-image\/1\.1"/, 'Image sitemap namespace');
 assert.equal(new Set(sitemapImages).size, 24, 'All 24 unique R2 images should appear in the sitemap');
 assert(sitemapImages.every((url) => url.startsWith(`${assetOrigin}/images/mottle-game-`)), 'Image sitemap URLs should use SEO filenames on the R2 domain');
-assert.match(await getFile('robots.txt'), /^Sitemap: https:\/\/mottlegame\.cc\/sitemap\.xml\s*$/m);
+assert.match(await getFile('robots.txt'), /^Sitemap: https:\/\/mottlegame\.cc\/sitemap\/sitemap\.xml\s*$/m);
 assert.equal(
   (await getFile('c653865ec2165f59c5939e42cda4649c.txt')).trim(),
   'c653865ec2165f59c5939e42cda4649c',
