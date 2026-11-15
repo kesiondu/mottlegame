@@ -1,0 +1,84 @@
+---
+import '@fontsource/kanit/latin-700.css';
+import '@fontsource/source-sans-3/latin-400.css';
+import '@fontsource/source-sans-3/latin-600.css';
+import '../styles/site.css';
+import { languages, localized, origin, ui } from '../data/site.mjs';
+import { sources } from '../data/content.mjs';
+
+const { lang = 'en', page = '', title, description, schema, noindex = false, home = false } = Astro.props;
+const t = ui[lang];
+const other = lang === 'en' ? 'zh' : 'en';
+const canonical = new URL(localized(lang, page), origin).href;
+const image = new URL('/art/mottle-game-share.jpg', origin).href;
+const homeUrl = localized(lang);
+const serialized = schema && JSON.stringify(schema).replace(/</g, '\\u003c');
+const nav = [
+  ['how-to-play', t.how],
+  ['controls', t.controls],
+  ['tips', t.tips],
+  ['faq', t.faq],
+];
+---
+<!doctype html>
+<html lang={languages[lang]} data-locale={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#102d22" />
+    {noindex ? <meta name="robots" content="noindex, follow" /> : <>
+      <link rel="canonical" href={canonical} />
+      <link rel="alternate" hreflang="en" href={new URL(localized('en', page), origin).href} />
+      <link rel="alternate" hreflang="zh-Hans" href={new URL(localized('zh', page), origin).href} />
+      <link rel="alternate" hreflang="x-default" href={new URL(localized('en', page), origin).href} />
+    </>}
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta property="og:type" content={page === 'play-guide' ? 'article' : 'website'} />
+    <meta property="og:site_name" content="Mottle Game" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    {!noindex && <meta property="og:url" content={canonical} />}
+    <meta property="og:locale" content={lang === 'zh' ? 'zh_CN' : 'en_US'} />
+    <meta property="og:locale:alternate" content={lang === 'zh' ? 'en_US' : 'zh_CN'} />
+    <meta property="og:image" content={image} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={lang === 'zh' ? '游戏封面插画，包含色块与萤火虫' : 'Illustrated camouflage tiles and fireflies from the Mottle Game guide'} />
+    <meta name="twitter:card" content="summary_large_image" />
+    {serialized && <script type="application/ld+json" is:inline set:html={serialized}></script>}
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">{t.skip}</a>
+    <header class="site-header">
+      <div class="site-header-inner">
+        <a class="brand" href={homeUrl}>
+          <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+          {t.brand}
+        </a>
+        <nav class="primary-nav" aria-label={t.nav}>
+          {nav.map(([id, label]) => <a href={home ? `#${id}` : `${homeUrl}#${id}`}>{label}</a>)}
+          <a href={localized(lang, 'play-guide')} aria-current={page === 'play-guide' ? 'page' : undefined}>{t.guide}</a>
+        </nav>
+        <a class="language-switch" href={localized(other, noindex ? '' : page)} lang={languages[other]} hreflang={languages[other]}>{lang === 'en' ? '简体中文' : 'English'}</a>
+      </div>
+    </header>
+    <slot />
+    <footer class="site-footer">
+      <div class="site-footer-inner content-width">
+        <div>
+          <a class="brand footer-brand" href={homeUrl}>{t.brand}</a>
+          <p>{t.footer}</p>
+          <p>{t.independent} · <a href={sources.original} rel="noopener noreferrer">{t.original}</a></p>
+        </div>
+        <nav aria-label={lang === 'zh' ? '页脚链接' : 'Footer'} class="footer-nav">
+          <a href={localized(lang, 'play-guide')}>{t.guide}</a>
+          <a href={localized(lang, 'privacy')}>{t.privacy}</a>
+          <a href={localized(lang, 'terms')}>{t.terms}</a>
+          <a href={localized(lang, 'contact')}>{t.contact}</a>
+        </nav>
+      </div>
+    </footer>
+  </body>
+</html>

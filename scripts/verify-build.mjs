@@ -1,0 +1,96 @@
+import assert from 'node:assert/strict';
+import { access, readFile } from 'node:fs/promises';
+
+const root = new URL('../dist/', import.meta.url);
+const origin = 'https://mottlegame.cc';
+const pages = ['', 'play-guide/', 'privacy/', 'terms/', 'contact/'];
+const getFile = (file) => readFile(new URL(file, root), 'utf8');
+const title = 'Mottle Game — Play Online Free, Meaning, Controls & Tips';
+const description = 'Mottle is a free browser hide-and-seek game. Learn what Mottle means, how to play, Firefly and Camo mechanics, controls and the best hiding tips.';
+const englishHeadings = [
+  'What Is Mottle Game', 'What Does Mottle Mean?', 'Is Mottle a Board Game?',
+  'How to Play', 'Controls', 'Mechanics', 'Tips', 'Download & Unblocked', 'FAQ',
+];
+
+function decode(text) {
+  return text.replaceAll('&amp;', '&').replaceAll('&quot;', '"').replaceAll('&#39;', "'")
+    .replaceAll('&lt;', '<').replaceAll('&gt;', '>');
+}
+
+function plain(html) {
+  return decode(html.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim());
+}
+
+function countWords(text) {
+  return [...text.matchAll(/[\p{L}\p{N}]+(?:['’\u2010\u2011-][\p{L}\p{N}]+)*/gu)].length;
+}
+
+function schema(html) {
+  const match = html.match(/<script[^>]+type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/);
+  assert(match, 'Missing JSON-LD');
+  return JSON.parse(match[1]);
+}
+
+const sitemap = await getFile('sitemap.xml');
+const sitemapUrls = [...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map((match) => match[1]);
+const expectedUrls = pages.flatMap((page) => [origin + '/' + page, origin + '/zh/' + page]);
+assert.deepEqual(new Set(sitemapUrls), new Set(expectedUrls), 'Sitemap paths');
+assert.equal(sitemapUrls.length, expectedUrls.length);
+assert.match(await getFile('robots.txt'), /^Sitemap: https:\/\/mottlegame\.cc\/sitemap\.xml\s*$/m);
+assert.match(await getFile('llms.txt'), /play-guide\//);
+assert.match(await getFile('404.html'), /noindex/);
+
+for (const [prefix, lang] of [['', 'en'], ['zh/', 'zh-Hans']]) {
+  for (const page of pages) {
+    const route = '/' + prefix + page;
+    const html = await getFile(prefix + page + 'index.html');
+    assert(html.includes(`<html lang="${lang}"`), `${route} html lang`);
+    assert(html.includes(`rel="canonical" href="${origin}${route}"`), `${route} self canonical`);
+    assert(html.includes(`hreflang="en" href="${origin}/${page}"`), `${route} English alternate`);
+    assert(html.includes(`hreflang="zh-Hans" href="${origin}/zh/${page}"`), `${route} Chinese alternate`);
+    assert(html.includes(`hreflang="x-default" href="${origin}/${page}"`), `${route} default alternate`);
+    assert.equal([...html.matchAll(/<h1\b/g)].length, 1, `${route} H1 count`);
+    assert.doesNotMatch(html, /<iframe\b/, `${route} should have no eager iframe`);
+    for (const asset of html.matchAll(/<img[^>]+src="(\/[^"]+)"/g)) {
+      await access(new URL(asset[1].slice(1), root));
+    }
+    if (page === 'play-guide/') {
+      assert.equal(schema(html)['@type'], 'Article');
+      assert.match(html, /<figure class="evidence-item">/, `${route} first-hand screenshots`);
+      assert.match(html, /id="run-log"/, `${route} observed trial data`);
+    }
+    if (page) continue;
+
+    for (const policy of ['privacy/', 'terms/', 'contact/']) {
+      assert(html.includes(`href="/${prefix}${policy}"`), `${route} footer link ${policy}`);
+    }
+    assert(html.indexOf('id="play"') < html.indexOf('<h1'), `${route} game first`);
+    const article = html.match(/<article\b[\s\S]*?<\/article>/)?.[0];
+    assert(article, `${route} semantic article`);
+    const nodes = schema(html)['@graph'];
+    assert.deepEqual(nodes.map((node) => node['@type']), ['WebSite', 'WebPage', 'VideoGame', 'FAQPage']);
+    const questions = [...article.matchAll(/<summary>([\s\S]*?)<\/summary>\s*<p>([\s\S]*?)<\/p>/g)]
+      .map((match) => [plain(match[1]), plain(match[2])]);
+    assert(questions.length >= 8 && questions.length <= 12, `${route} FAQ count`);
+    assert.deepEqual(questions, nodes[3].mainEntity.map((q) => [q.name, q.acceptedAnswer.text]), `${route} FAQ parity`);
+    if (lang === 'en') {
+      assert.equal(plain(html.match(/<title>(.*?)<\/title>/)?.[1]), title);
+      assert.equal(decode(html.match(/<meta name="description" content="([^"]*)"/)?.[1]), description);
+      assert.equal(plain(html.match(/<h1[^>]*>(.*?)<\/h1>/)?.[1]), 'Mottle Game');
+      assert.deepEqual([...article.matchAll(/<h2[^>]*>(.*?)<\/h2>/g)].map((match) => plain(match[1])), englishHeadings);
+      assert.deepEqual([...article.matchAll(/<h3[^>]*>(.*?)<\/h3>/g)].map((match) => plain(match[1])), ['Firefly', 'Camo', 'Seekers']);
+      assert(plain(article).includes('It is not a board game.'));
+      const intro = plain(article.match(/<p class="intro">(.*?)<\/p>/)?.[1]);
+      const meaning = plain(article.match(/<section id="mottle-meaning"[^>]*>([\s\S]*?)<\/section>/)?.[1]);
+      const words = countWords(plain(article));
+      assert.equal(countWords(intro), 40, 'English definition words');
+      assert(countWords(meaning) >= 200 && /\bmotel\b/i.test(meaning), 'English meaning section');
+      assert(words >= 1200 && words <= 1500, `English article word count: ${words}`);
+      console.log(`English homepage: ${words} words, ${countWords(meaning)} in the meaning section, ${questions.length} FAQs.`);
+    } else {
+      assert.match(article, /变色龙：躲猫猫/);
+    }
+  }
+}
+
+console.log(`${expectedUrls.length} canonical routes, hreflang, FAQ parity, assets, sitemap, robots and 404 verified.`);

@@ -1,0 +1,15 @@
+node_modules/
+.npm-cache/
+dist/
+.astro/
+.wrangler/
+.env
+.env.*
+!.env.example
+*.log
+.agents/
+.impeccable/
+docs/audit/
+.playwright-cli/
+output/
+/playtest-*.cjs

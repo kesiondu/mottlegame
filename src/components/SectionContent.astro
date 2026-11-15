@@ -1,0 +1,37 @@
+---
+import Icon from './Icon.astro';
+const { section, lang } = Astro.props;
+const listItems = (entries) => entries.map((entry) =>
+  typeof entry === 'string' ? { text: entry } : entry);
+---
+{section.intro && <p class="section-answer">{section.intro}</p>}
+{section.paragraphs?.map((paragraph) => <p>{paragraph}</p>)}
+{section.steps?.length > 0 && <ol class="play-steps">
+  {listItems(section.steps).map(({ label, text }) => <li>{label && <strong>{label} </strong>}{text}</li>)}
+</ol>}
+{section.controls?.length > 0 && <dl class="controls-list">
+  {section.controls.map(({ input, action }) => <div><dt>{input}</dt><dd>{action}</dd></div>)}
+</dl>}
+{section.mechanics?.length > 0 && <div class="mechanics-grid">
+  {section.mechanics.map((item, index) => <section class={`mechanic mechanic-${index}`}>
+    <h3>{item.title}</h3>
+    {item.intro && <p>{item.intro}</p>}
+    {item.paragraphs?.map((paragraph) => <p>{paragraph}</p>)}
+  </section>)}
+</div>}
+{section.tips?.length > 0 && <ul class="tips-list">
+  {listItems(section.tips).map(({ label, text }) => <li>{label && <strong>{label} </strong>}{text}</li>)}
+</ul>}
+{section.items?.length > 0 && <div class="faq">
+  {section.items.map(({ question, answer }) => <details>
+    <summary>{question}<Icon name="chevron" size={17} /></summary>
+    <p>{answer}</p>
+  </details>)}
+</div>}
+{section.figures?.map(({ path, alt, caption, width, height }) => <figure class="evidence-item">
+  <a href={path}><img src={path} alt={alt} width={width} height={height} loading="lazy" decoding="async" /></a>
+  <figcaption>{caption}</figcaption>
+</figure>)}
+{section.links?.length > 0 && <ul class="source-links" aria-label={lang === 'zh' ? '参考来源' : 'Sources'}>
+  {section.links.map(({ href, label }) => <li><a href={href} rel="noopener noreferrer">{label}</a></li>)}
+</ul>}

@@ -1,0 +1,35 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import GameStage from './GameStage.astro';
+import SectionContent from './SectionContent.astro';
+import Icon from './Icon.astro';
+import { content } from '../data/content.mjs';
+import { localized, ui } from '../data/site.mjs';
+import { homeSchema } from '../data/schema.mjs';
+
+const { lang } = Astro.props;
+const copy = content[lang];
+const t = ui[lang];
+const guideUrl = localized(lang, 'play-guide');
+const updated = copy.guide.updated;
+const localizedDate = updated && new Intl.DateTimeFormat(lang === 'zh' ? 'zh-CN' : 'en-US', { dateStyle: 'long', timeZone: 'UTC' }).format(new Date(updated));
+---
+<SiteLayout lang={lang} title={copy.title} description={copy.description} schema={homeSchema(lang)} home>
+  <main>
+    <GameStage lang={lang} />
+    <article class="reading-surface" aria-labelledby="mottle-heading">
+      <div class="content-width article-shell">
+        <header id="main-content" class="definition" tabindex="-1" aria-labelledby="mottle-heading">
+          <h1 id="mottle-heading">{copy.h1}</h1>
+          <p class="intro">{copy.definition}</p>
+          {updated && <p class="evidence-date">{lang === 'zh' ? '最后更新' : 'Last updated'} <time datetime={updated}>{localizedDate}</time></p>}
+        </header>
+        {copy.sections.map((section) => <section id={section.id} class:list={['article-section', { 'section-mechanics': section.mechanics?.length }]} aria-labelledby={`title-${section.id}`}>
+          <h2 id={`title-${section.id}`}>{section.title}</h2>
+          <SectionContent section={section} lang={lang} />
+          {section.id === 'how-to-play' && <a class="guide-link" href={guideUrl}>{t.readGuide}<Icon name="arrow" size={18} /></a>}
+        </section>)}
+      </div>
+    </article>
+  </main>
+</SiteLayout>

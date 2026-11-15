@@ -1,0 +1,60 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import SectionContent from './SectionContent.astro';
+import Icon from './Icon.astro';
+import { content } from '../data/content.mjs';
+import { localized, ui } from '../data/site.mjs';
+import { guideSchema } from '../data/schema.mjs';
+
+const { lang } = Astro.props;
+const { guide } = content[lang];
+const t = ui[lang];
+const dateLabel = lang === 'zh' ? '最后更新' : 'Last updated';
+const tableLabel = lang === 'zh' ? '实玩挑战记录' : 'Playtest run log';
+---
+<SiteLayout lang={lang} page="play-guide" title={guide.title} description={guide.description} schema={guideSchema(lang, guide)}>
+  <main id="main-content" class="reading-surface subpage guide-page" tabindex="-1">
+    <div class="content-width article-shell">
+      <article aria-labelledby="guide-title">
+        <header class="definition">
+          <a class="back-link" href={`${localized(lang)}#play`}><Icon name="play" size={17} />{t.play}</a>
+          <h1 id="guide-title">{guide.h1}</h1>
+          <p class="intro">{guide.intro}</p>
+          {guide.updated && <p class="evidence-date">{dateLabel} <time datetime={guide.updated}>{new Intl.DateTimeFormat(lang === 'zh' ? 'zh-CN' : 'en-US', { dateStyle: 'long', timeZone: 'UTC' }).format(new Date(guide.updated))}</time></p>}
+        </header>
+        <nav class="guide-nav" aria-label={lang === 'zh' ? '攻略目录' : 'Guide contents'}>
+          {guide.sections.map(({ id, title }) => <a href={`#${id}`}>{title}</a>)}
+          {guide.runTable?.rows?.length && <a href="#run-log">{tableLabel}</a>}
+          {guide.evidence?.length > 0 && <a href="#screenshots">{t.evidence}</a>}
+        </nav>
+        {guide.sections.map((section) => <section id={section.id} class="article-section" aria-labelledby={`guide-${section.id}`}>
+          <h2 id={`guide-${section.id}`}>{section.title}</h2>
+          <SectionContent section={section} lang={lang} />
+        </section>)}
+        {guide.runTable?.rows?.length > 0 && <section id="run-log" class="article-section wide-section" aria-labelledby="run-log-heading">
+          <h2 id="run-log-heading">{tableLabel}</h2>
+          <div class="run-table-scroll" role="region" aria-labelledby="run-log-heading" tabindex="0">
+            <table class="run-table">
+              <thead><tr>{guide.runTable.columns.map((label) => <th scope="col">{label}</th>)}</tr></thead>
+              <tbody>
+                {guide.runTable.rows.map((row) => <tr>{row.map((value, index) => index === 0
+                  ? <th scope="row">{value}</th>
+                  : <td>{value}</td>)}</tr>)}
+              </tbody>
+            </table>
+          </div>
+        </section>}
+        {guide.evidence?.length > 0 && <section id="screenshots" class="article-section wide-section" aria-labelledby="guide-evidence">
+          <h2 id="guide-evidence">{t.evidence}</h2>
+          <div class="evidence-grid">
+            {guide.evidence.map(({ path, alt, caption, width, height }) => <figure class="evidence-item">
+              <a href={path}><img src={path} alt={alt} width={width} height={height} loading="lazy" decoding="async" /></a>
+              <figcaption>{caption}</figcaption>
+            </figure>)}
+          </div>
+        </section>}
+        <a class="guide-link" href={`${localized(lang)}#play`}><Icon name="play" size={18} />{t.play}</a>
+      </article>
+    </div>
+  </main>
+</SiteLayout>

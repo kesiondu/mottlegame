@@ -1,0 +1,15 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import { ui } from '../data/site.mjs';
+const t = ui.en;
+---
+<SiteLayout title={`${t.missing} | ${t.brand}`} description={t.missingText} noindex>
+  <main id="main-content" class="reading-surface subpage" tabindex="-1">
+    <div class="content-width article-shell plain-article">
+      <h1>{t.missing}</h1>
+      <p>{t.missingText}</p>
+      <a href="/">{t.back}</a>
+      <p lang="zh-Hans"><a href="/zh/">返回《变色龙：躲猫猫》</a></p>
+    </div>
+  </main>
+</SiteLayout>

@@ -1,0 +1,130 @@
+export const origin = 'https://mottlegame.cc';
+export const languages = { en: 'en', zh: 'zh-Hans' };
+export const localized = (lang, page = '') =>
+  `/${lang === 'zh' ? 'zh/' : ''}${page ? `${page}/` : ''}`;
+export const legalPages = ['privacy', 'terms', 'contact'];
+export const pages = ['', 'play-guide', ...legalPages];
+
+export const ui = {
+  en: {
+    brand: 'Mottle Game',
+    skip: 'Skip to the guide',
+    nav: 'Main navigation',
+    how: 'How to Play',
+    controls: 'Controls',
+    tips: 'Tips',
+    faq: 'FAQ',
+    guide: 'Play Guide',
+    privacy: 'Privacy',
+    terms: 'Terms',
+    contact: 'Contact',
+    independent: 'Independent game guide',
+    footer: 'A player guide for Mottle – Hide & Seek, created by Star Lord.',
+    play: 'Play Mottle',
+    player: 'Mottle game player',
+    frame: 'Mottle – Hide & Seek by Star Lord',
+    restart: 'Restart',
+    fullscreen: 'Fullscreen',
+    exitFullscreen: 'Exit fullscreen',
+    original: 'Open original',
+    retry: 'Try again',
+    loading: 'Loading the original game…',
+    timeout: 'The game is taking longer than expected.',
+    playNote: 'A browser hide-and-seek game about blending into the ground.',
+    frameNote: 'The original game loads when you choose to play.',
+    evidence: 'Playtest screenshots',
+    readGuide: 'Read the illustrated play guide',
+    back: 'Back to Mottle Game',
+    missing: 'Page not found',
+    missingText: 'That address does not have a page. You can return to the game or open the play guide.',
+  },
+  zh: {
+    brand: '变色龙：躲猫猫',
+    skip: '跳到正文',
+    nav: '主导航',
+    how: '玩法',
+    controls: '操作',
+    tips: '技巧',
+    faq: '常见问题',
+    guide: '实测攻略',
+    privacy: '隐私',
+    terms: '使用条款',
+    contact: '联系',
+    independent: '独立游戏指南',
+    footer: '《变色龙：躲猫猫》由 Star Lord 创作。本站提供玩家指南。',
+    play: '开始游戏',
+    player: '变色龙：躲猫猫游戏播放器',
+    frame: 'Star Lord 创作的《变色龙：躲猫猫》原版游戏',
+    restart: '重新开始',
+    fullscreen: '全屏',
+    exitFullscreen: '退出全屏',
+    original: '打开原版',
+    retry: '再试一次',
+    loading: '正在加载原版游戏…',
+    timeout: '游戏加载比预期慢。',
+    playNote: '贴着地面变色，躲开搜索光。这是一款浏览器躲猫猫游戏。',
+    frameNote: '点击开始后加载原版游戏，游戏内界面可能仍为英文。',
+    evidence: '实玩截图',
+    readGuide: '查看带截图的实测攻略',
+    back: '返回《变色龙：躲猫猫》',
+    missing: '页面未找到',
+    missingText: '这个地址没有对应的页面。你可以回到游戏，或继续查看玩法攻略。',
+  },
+};
+
+export const policies = {
+  en: {
+    privacy: {
+      heading: 'Privacy',
+      description: 'How Mottle Game handles visits and the embedded game.',
+      paragraphs: [
+        'This independent guide provides public pages without a sign-in form. The deployed website uses Cloudflare to serve pages, process web requests and protect the service.',
+        'Choosing Play loads the original game from a third-party domain. The game host may receive browser and network information and use browser storage under its own practices. Links to the original listing open a separate service.',
+        'The guide cannot read your controls, score or other private state inside the embedded game. Use the contact page to report a privacy concern about this guide.',
+      ],
+    },
+    terms: {
+      heading: 'Terms',
+      description: 'Terms for using the independent Mottle Game guide.',
+      paragraphs: [
+        'This is an independent player guide. Mottle – Hide & Seek is created by Star Lord. The original game and any third-party materials belong to their respective rights holders.',
+        'Gameplay runs on the original host. Availability may change, and the guide cannot guarantee access from a particular device or network.',
+        'Advice on this site comes from play sessions and editorial analysis. Individual scores can vary with timing, route choice and in-game conditions.',
+      ],
+    },
+    contact: {
+      heading: 'Contact',
+      description: 'How to report a guide correction or find the original Mottle game.',
+      paragraphs: [
+        'For a correction to the guide, include the page URL, the sentence or section in question, and what you observed. For an issue with gameplay itself, use the original listing to find the creator.',
+      ],
+    },
+  },
+  zh: {
+    privacy: {
+      heading: '隐私',
+      description: '了解本站与嵌入游戏如何处理网站访问。',
+      paragraphs: [
+        '本站是独立玩法指南，公开页面无需登录。部署后会使用 Cloudflare 提供网页、处理访问请求及保护服务。',
+        '点击「开始游戏」后，浏览器会连接第三方域名以加载原版。游戏服务可能接收浏览器及网络信息，也可能使用浏览器存储，具体做法以其自身政策为准。打开原版作品页也会进入第三方服务。',
+        '本站无法读取嵌入游戏里的操作、分数或其他内部状态。如需报告与本站有关的隐私问题，请使用联系页面。',
+      ],
+    },
+    terms: {
+      heading: '使用条款',
+      description: '《变色龙：躲猫猫》独立玩家指南的使用条款。',
+      paragraphs: [
+        '本站提供独立玩家指南。《变色龙：躲猫猫》由 Star Lord 创作。原版游戏及第三方素材的权利归各自权利人所有。',
+        '游戏由原服务提供，能否访问取决于服务状态、设备和网络条件。',
+        '攻略参考实际游玩与编辑分析。操作时机、路线和局内情况都可能影响你的分数。',
+      ],
+    },
+    contact: {
+      heading: '联系',
+      description: '了解如何报告攻略错误或联系原作相关渠道。',
+      paragraphs: [
+        '报告攻略错误时，请附上页面链接、原句或所在章节，以及你实际观察到的现象。游戏本身的问题可通过原版作品页寻找作者。',
+      ],
+    },
+  },
+};

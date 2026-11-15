@@ -1,0 +1,73 @@
+---
+import Icon from './Icon.astro';
+import { ui } from '../data/site.mjs';
+import { sources } from '../data/content.mjs';
+const { lang } = Astro.props;
+const t = ui[lang];
+const palette = lang === 'zh'
+  ? [['GN-417', '苔绿'], ['OR-306', '陶土'], ['BL-528', '岩蓝'], ['YE-214', '淡黄'], ['VT-603', '雾紫']]
+  : [['GN-417', 'Moss'], ['OR-306', 'Clay'], ['BL-528', 'Slate'], ['YE-214', 'Faded yellow'], ['VT-603', 'Violet']];
+---
+<section id="play" class="play-stage" aria-label={t.player}>
+  <div class="game-composition">
+    <aside class="play-aside">
+      <p class="play-inscription">{t.playNote}</p>
+      <p class="independent-label">{t.independent}</p>
+    </aside>
+    <div
+      class="player"
+      data-player
+      data-state="idle"
+      data-src={sources.gameUrl}
+      data-frame-title={t.frame}
+      data-fullscreen-label={t.fullscreen}
+      data-exit-fullscreen-label={t.exitFullscreen}
+    >
+      <div class="game-frame">
+        <img
+          class="game-poster"
+          src="/art/mottle-tiles.webp"
+          srcset="/art/mottle-tiles-small.webp 640w, /art/mottle-tiles.webp 1024w"
+          sizes="(max-width: 620px) 92vw, (max-width: 1000px) 540px, 41vw"
+          alt=""
+          fetchpriority="high"
+          width="1024"
+          height="1024"
+        />
+        <div class="frame-mount" data-frame-mount></div>
+        <button class="play-button" type="button" data-play hidden>
+          <Icon name="play" size={24} /> {t.play}
+        </button>
+        <div class="game-status" data-game-status role="status" aria-live="polite" hidden>
+          <span class="loading-orb" aria-hidden="true"></span>
+          <p data-loading-msg>{t.loading}</p>
+          <p data-timeout-msg hidden>{t.timeout}</p>
+          <div class="recovery-controls" data-recovery hidden>
+            <button type="button" class="play-button recovery-button" data-retry>{t.retry}</button>
+            <a href={sources.original} target="_blank" rel="noopener noreferrer">{t.original} <Icon name="external" size={14} /></a>
+          </div>
+        </div>
+        <noscript><a class="play-button" href={sources.original}>{t.original} <Icon name="external" size={20} /></a></noscript>
+      </div>
+      <div class="game-tools">
+        <button type="button" data-restart hidden disabled><Icon name="restart" /> {t.restart}</button>
+        <button type="button" data-fullscreen hidden aria-pressed="false">
+          <Icon name="fullscreen" /> <span data-fullscreen-text>{t.fullscreen}</span>
+        </button>
+        <a href={sources.original} data-original target="_blank" rel="noopener noreferrer">
+          <Icon name="external" /> {t.original}
+        </a>
+      </div>
+    </div>
+    <div class="stage-legend" aria-hidden="true">
+      {palette.map(([code, name], index) => <span class={`legend-field field-${index}`}>{code}<br />{name}</span>)}
+    </div>
+    <div class="atlas-footer">
+      <span class="atlas-name">{lang === 'zh' ? '伪装色卡' : 'Camouflage palette'}</span>
+      <span class="atlas-ruler" aria-hidden="true"></span>
+      <div class="ink-samples" aria-hidden="true">{palette.map((_, index) => <i class={`sample-${index}`}></i>)}</div>
+    </div>
+    <p class="connection-note">{t.frameNote}</p>
+  </div>
+</section>
+<script is:inline src="/player.js" defer></script>

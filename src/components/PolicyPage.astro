@@ -1,0 +1,23 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import { policies, localized, ui } from '../data/site.mjs';
+import { sources } from '../data/content.mjs';
+
+const { lang, page } = Astro.props;
+const copy = policies[lang][page];
+const t = ui[lang];
+const repositoryUrl = import.meta.env.PUBLIC_REPOSITORY_URL;
+---
+<SiteLayout lang={lang} page={page} title={`${copy.heading} | ${t.brand}`} description={copy.description}>
+  <main id="main-content" class="reading-surface subpage" tabindex="-1">
+    <article class="content-width article-shell plain-article">
+      <h1>{copy.heading}</h1>
+      {copy.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+      {page === 'contact' && <ul class="source-links">
+        {repositoryUrl && <li><a href={`${repositoryUrl.replace(/\/$/, '')}/issues`}>{lang === 'zh' ? '在 GitHub 报告攻略问题' : 'Report a guide issue on GitHub'}</a></li>}
+        <li><a href={sources.original} rel="noopener noreferrer">{t.original}</a></li>
+      </ul>}
+      <p><a href={localized(lang)}>{t.back}</a></p>
+    </article>
+  </main>
+</SiteLayout>

@@ -1,0 +1,11 @@
+---
+import PolicyPage from '../components/PolicyPage.astro';
+import GuidePage from '../components/GuidePage.astro';
+import { legalPages } from '../data/site.mjs';
+
+export function getStaticPaths() {
+  return ['play-guide', ...legalPages].map((page) => ({ params: { page } }));
+}
+const { page } = Astro.params;
+---
+{page === 'play-guide' ? <GuidePage lang="en" /> : <PolicyPage lang="en" page={page} />}
