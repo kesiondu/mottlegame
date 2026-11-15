@@ -54,6 +54,7 @@ assert.match(sitemap, /xmlns:image="http:\/\/www\.google\.com\/schemas\/sitemap-
 assert.equal(new Set(sitemapImages).size, 24, 'All 24 unique R2 images should appear in the sitemap');
 assert(sitemapImages.every((url) => url.startsWith(`${assetOrigin}/images/mottle-game-`)), 'Image sitemap URLs should use SEO filenames on the R2 domain');
 assert.match(await getFile('robots.txt'), /^Sitemap: https:\/\/mottlegame\.cc\/sitemap\/sitemap\.xml\s*$/m);
+assert.match(await getFile('_redirects'), /^\/sitemap\.xml \/sitemap\/sitemap\.xml 301$/m);
 assert.equal(
   (await getFile('c653865ec2165f59c5939e42cda4649c.txt')).trim(),
   'c653865ec2165f59c5939e42cda4649c',
