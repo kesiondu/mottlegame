@@ -343,7 +343,7 @@ p { margin: 0 0 1.15em; }
   font-size: .89rem;
   line-height: 1.33;
 }
-.has-expanded-player { overflow: hidden; }
+.has-expanded-player { overflow: hidden; overscroll-behavior: none; }
 .has-expanded-player .play-stage { z-index: 3; }
 .player:fullscreen, .player.is-expanded {
   display: flex;
@@ -636,6 +636,39 @@ strong { font-weight: 600; }
   .controls-list div { grid-template-columns: 1fr; gap: .1rem; }
   .game-tools svg { width: 17px; height: 17px; }
   .ink-samples { gap: .35rem; }
+}
+
+@media (pointer: coarse) and (max-width: 720px), (pointer: coarse) and (max-width: 1000px) and (max-height: 600px) {
+  .player.is-expanded {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: minmax(0, 1fr) auto;
+    align-items: stretch;
+    gap: 0;
+    padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+    overflow: hidden;
+  }
+  .player.is-expanded .game-frame {
+    width: 100%;
+    max-height: none;
+    min-height: 0;
+    aspect-ratio: auto;
+    border-radius: 0;
+    box-shadow: none;
+  }
+  .player.is-expanded .game-tools {
+    max-width: none;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    border-top: 1px solid #a2ba936f;
+    border-radius: 0;
+    background: var(--night);
+  }
+  .player.is-expanded .game-tools button {
+    min-height: 48px;
+    touch-action: manipulation;
+  }
+  .player.is-expanded .game-tools button + button { border-left: 1px solid #a2ba936f; }
+  .player.is-expanded .game-tools :focus-visible { outline-offset: -4px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

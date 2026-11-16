@@ -11,6 +11,8 @@ if (player) {
   const loading = player.querySelector('[data-loading-msg]');
   const timeout = player.querySelector('[data-timeout-msg]');
   const recovery = player.querySelector('[data-recovery]');
+  const mobilePlayer = window.matchMedia('(pointer: coarse) and (max-width: 720px), (pointer: coarse) and (max-width: 1000px) and (max-height: 600px)');
+  const outside = document.querySelectorAll('.skip-link, .site-header, .site-footer, .reading-surface');
   let frame;
   let timer;
   let attempts = 0;
@@ -40,7 +42,7 @@ if (player) {
   function loadGame() {
     window.clearTimeout(timer);
     const currentAttempt = ++attempts;
-    const moveFocus = document.activeElement === play || document.activeElement === retry;
+    const moveFocus = [play, retry, expand].includes(document.activeElement);
     const started = performance.now();
     frame = document.createElement('iframe');
     const currentFrame = frame;
@@ -70,18 +72,36 @@ if (player) {
   }
 
   function updateFullscreen() {
-    const active = document.fullscreenElement === player || player.classList.contains('is-expanded');
+    const expanded = player.classList.contains('is-expanded');
+    const active = document.fullscreenElement === player || expanded;
     expand.setAttribute('aria-pressed', String(active));
     expandText.textContent = active ? player.dataset.exitFullscreenLabel : player.dataset.fullscreenLabel;
-    document.body.classList.toggle('has-expanded-player', player.classList.contains('is-expanded'));
-    const outside = [document.querySelector('.site-header'), document.querySelector('.site-footer'), document.querySelector('.reading-surface')];
+    document.body.classList.toggle('has-expanded-player', expanded);
     for (const element of outside) {
-      if (element) element.inert = player.classList.contains('is-expanded');
+      element.inert = expanded;
     }
+  }
+
+  function setExpanded(expanded) {
+    player.classList.toggle('is-expanded', expanded);
+    if (expanded) {
+      player.setAttribute('role', 'dialog');
+      player.setAttribute('aria-modal', 'true');
+      player.setAttribute('aria-label', player.dataset.playerLabel);
+    } else {
+      player.removeAttribute('role');
+      player.removeAttribute('aria-modal');
+      player.removeAttribute('aria-label');
+    }
+    updateFullscreen();
+    expand.focus({ preventScroll: true });
   }
 
   play.addEventListener('click', () => {
     report('play_click');
+    if (mobilePlayer.matches && document.fullscreenElement !== player && !player.classList.contains('is-expanded')) {
+      setExpanded(true);
+    }
     loadGame();
   });
   restart.addEventListener('click', () => {
@@ -95,24 +115,23 @@ if (player) {
   expand.addEventListener('click', async () => {
     report('fullscreen_click');
     if (player.classList.contains('is-expanded')) {
-      player.classList.remove('is-expanded');
+      setExpanded(false);
     } else if (document.fullscreenElement === player) {
       await document.exitFullscreen();
+    } else if (mobilePlayer.matches) {
+      setExpanded(true);
     } else {
       try {
         await player.requestFullscreen();
       } catch {
-        player.classList.add('is-expanded');
+        setExpanded(true);
       }
     }
-    updateFullscreen();
   });
   document.addEventListener('fullscreenchange', updateFullscreen);
   document.addEventListener('keydown', (event) => {
     if (event.key === 'Escape' && player.classList.contains('is-expanded')) {
-      player.classList.remove('is-expanded');
-      updateFullscreen();
-      expand.focus({ preventScroll: true });
+      setExpanded(false);
     }
   });
 }
